@@ -1,0 +1,6 @@
+---
+params:
+  ip: $ip
+  limit: $limit
+  offset: $offset    
+model: Article::get_articles

@@ -24,3 +24,22 @@ Used Debian 7 packages:
 Used framework repositories:
 * https://github.com/pef-secure/dbix-struct.git
 * https://github.com/pef-secure/pef-front-psgi-dist.git
+
+PostgreSQL setup:
+* su - postgres
+* createdb pef
+* createuser pef
+* ^D
+* su - pef
+* psql < nls.sql
+* psql < demo.sql
+
+Nginx setup:
+* vi /etc/nginx/nginx.conf
+* /include
+* add string include /home/pef/pef-front-demo/conf/nginx-handlers.conf;
+
+Uwsgi setup:
+* cd /etc/uwsgi/apps-enabled
+* ln -s /home/pef/pef-front-demo/conf/demoapp.ini .
+

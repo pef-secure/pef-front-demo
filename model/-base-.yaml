@@ -1,0 +1,31 @@
+---
+params:
+  ip:
+    value: defaults.ip
+  limit40str:
+    max-size: 40
+  limit4_40str:
+    min-size: 4
+    max-size: 40
+  email:
+    regex: ^[\w!#\$\%&*+=?{|}~^-]+(?:\.[\w\%&*+=?{|}~^-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}$
+    min-size: 7
+  lang:
+    default: defaults.lang
+    regex: ^[a-z]{2}$
+  auth:
+    default: cookies.auth
+    max-size: 40
+  limit:
+    regex: ^\d+$        
+    max-size: 3
+  offset:
+    regex: ^\d+$
+    max-size: 10
+  positive_integer: ^\d+$
+  any_integer: ^$RE{num}{int}$
+  bool:
+    can_number: [0, 1]
+    default: 0
+  money: ^$RE{num}{decimal}{-places=>"0,2"}$
+   

@@ -1,0 +1,11 @@
+---
+params:
+  ip: $ip
+  id_article: $positive_integer
+  id_comment_parent:
+    base: $positive_integer
+    filter: Empty::to_undef
+  comment:
+    max-size: 1000
+    filter: [ s/</&lt;/g, s/>/&gt;/g ]
+model: Article::add_comment

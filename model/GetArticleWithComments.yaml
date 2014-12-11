@@ -1,0 +1,5 @@
+---
+params:
+  ip: $ip
+  id_article: $positive_integer
+model: Article::get_article_with_comments

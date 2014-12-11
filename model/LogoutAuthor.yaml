@@ -1,0 +1,11 @@
+---
+params:
+  ip: $ip
+  auth: 
+    base: $auth
+    optional: true
+model: Author::logout
+result:
+  DEFAULT:
+    redirect: /
+    unset-cookie: auth

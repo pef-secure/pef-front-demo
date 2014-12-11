@@ -1,0 +1,10 @@
+---
+params:
+  ip: $ip
+  auth: $auth
+  title:
+    max-size: 100
+    filter: [ s/</&lt;/g, s/>/&gt;/g ]
+  content:
+    max-size: 4000
+model: Article::add_article

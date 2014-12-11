@@ -1,0 +1,18 @@
+---
+params:
+  ip: $ip
+  login: $limit4_40str
+  password: $limit4_40str
+model: Author::login
+result:
+  OK:
+    redirect:
+      - TT form.back_url
+      - /
+    set-cookie:
+      auth:
+        value: TT response.auth
+        expires: TT response.expires
+  DEFAULT:
+    redirect: TT "/appLogin?message=${response.answer}" ~ (form.back_url? "&back_url=${form.back_url}":"")
+    unset-cookie: auth

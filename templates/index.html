@@ -8,14 +8,16 @@
 </head>
 
 <body>
-<h1>это тест</h1>
-<p>и нифига пока не знаю что тут написано</p>
-[% data = "test".model %]
-[% DUMP %]
-<ul>
-[% FOR i in data.data %]
-<li>[% i %]</li>
-[% END %]
-</ul>
+[% IF form.cookie; articles_offset = form.cookie %]
+[% ELSE; articles_offset = 0 %]
+<h1>[% msg('This is a PEF::Front Demo Blog') %]</h1>
+[% articles = "get articles".model(offset => articles_offset, limit => 5) %]
+  [% FOREACH article IN articles.articles %]
+    <h3>[% article.title %]</h3>
+    <p>[% article.content %]</p>
+    [% IF articles.count > articles_offset + 5 %]
+    <a href="[% defults.path_info %]/[% articles_offset + 5 %]">Next</a>
+    [% END %]
+  [% END %]
 </body>
 </html>

@@ -1,0 +1,7 @@
+---
+params:
+  ip: $ip
+  auth: 
+    base: $auth
+    optional: true
+model: Author::get_info
