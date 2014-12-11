@@ -10,6 +10,7 @@
 <body>
 [% IF form.cookie; articles_offset = form.cookie %]
 [% ELSE; articles_offset = 0 %]
+[% END %]
 <h1>[% msg('This is a PEF::Front Demo Blog') %]</h1>
 [% articles = "get articles".model(offset => articles_offset, limit => 5) %]
   [% FOREACH article IN articles.articles %]
