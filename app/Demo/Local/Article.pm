@@ -49,6 +49,11 @@ sub get_article_with_comments {
 
 sub add_comment {
 	my ($req, $defaults) = @_;
+	my $author = get_author_from_auth($req->{auth});
+	return {
+		result => "NO_CAPTCHA",
+		answer => "Anonymous user must enter CAPTCHA"
+	} if not $author and $req->{captcha_code} eq 'nocheck';
 	return {
 		result     => "OK",
 		id_comment => new_row(

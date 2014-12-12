@@ -1,0 +1,13 @@
+---
+params:
+  width:
+    base: $positive_integer
+    default: 35
+  height:
+    default: 40
+    base: $positive_integer
+  size:
+    default: 5
+    base: $positive_integer
+extra_params: ignore
+model: PEF::Front::Captcha::make_captcha

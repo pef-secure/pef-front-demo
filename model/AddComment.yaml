@@ -1,11 +1,23 @@
 ---
 params:
   ip: $ip
+  auth: 
+    base: $auth
+    optional: true
   id_article: $positive_integer
   id_comment_parent:
     base: $positive_integer
     filter: Empty::to_undef
+  author:
+    base: $limit40str
+    min-size: 1
+    filter: Default::auth_to_author
   comment:
     max-size: 1000
     filter: [ s/</&lt;/g, s/>/&gt;/g ]
+  captcha_code:
+    min-size: 5
+    captcha: captcha_hash
+  captcha_hash:
+    min-size: 5
 model: Article::add_comment
