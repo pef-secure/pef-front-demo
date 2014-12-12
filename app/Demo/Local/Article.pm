@@ -4,15 +4,20 @@ use Demo::Common;
 
 sub get_articles {
 	my ($req, $defaults) = @_;
+	my $articles = all_rows(
+		article => -order_by => {-desc => 'id_article'},
+		-limit  => $req->{limit},
+		-offset => $req->{offset},
+		sub { $_->filter_timestamp->data }
+	);
+	for my $article (@$articles) {
+		$article->{comment_count} = one_row('select count(*) from comment',
+			{hash_ref_slice $article, 'id_article'})->count;
+	}
 	return {
 		result   => "OK",
-		articles => all_rows(
-			article => -order_by => {-desc => 'id_article'},
-			-limit  => $req->{limit},
-			-offset => $req->{offset},
-			sub { $_->filter_timestamp->data }
-		),
-		count => one_row('select count(*) from article')->count
+		articles => $articles,
+		count    => one_row('select count(*) from article')->count
 	};
 }
 
@@ -53,7 +58,8 @@ sub add_comment {
 	return {
 		result => "NO_CAPTCHA",
 		answer => "Anonymous user must enter CAPTCHA"
-	} if not $author and $req->{captcha_code} eq 'nocheck';
+	  }
+	  if not $author and $req->{captcha_code} eq 'nocheck';
 	return {
 		result     => "OK",
 		id_comment => new_row(
@@ -63,7 +69,7 @@ sub add_comment {
 	};
 }
 
-sub delete_article_with_commets {
+sub delete_article_with_comments {
 	my ($req, $defaults) = @_;
 	return {
 		result => "NEED_LOGIN",
@@ -71,6 +77,17 @@ sub delete_article_with_commets {
 	  }
 	  if not get_author_from_auth($req->{auth});
 	DBC::Article->delete({hash_ref_slice $req, 'id_article'});
+	return {result => "OK"};
+}
+
+sub delete_comment_with_tree {
+	my ($req, $defaults) = @_;
+	return {
+		result => "NEED_LOGIN",
+		answer => 'You have to login for this operation'
+	  }
+	  if not get_author_from_auth($req->{auth});
+	DBC::Comment->delete({hash_ref_slice $req, 'id_comment'});
 	return {result => "OK"};
 }
 
