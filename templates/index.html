@@ -18,10 +18,10 @@
   <p>[% article.content %]</p>
 [% END %]
 [% IF articles_offset > 5 %]
-  <a href="[% defults.path_info %]/[% articles_offset - 5 %]">Previous</a>
+  <a href="[% path_info %]/[% articles_offset - 5 %]">Previous</a>
 [% END %]
 [% IF articles.count > articles_offset + 5 %]
-  <a href="[% defults.path_info %]/[% articles_offset + 5 %]">Next</a>
+  <a href="[% path_info %]/[% articles_offset + 5 %]">Next</a>
 [% END %]
 </body>
 </html>
