@@ -13,6 +13,7 @@ sub get_articles {
 	for my $article (@$articles) {
 		$article->{comment_count} = one_row('select count(*) from comment',
 			{hash_ref_slice $article, 'id_article'})->count;
+		$article->{author} = one_row(author => $article->{id_author})->name;
 	}
 	return {
 		result   => "OK",

@@ -13,12 +13,15 @@
 [% END %]
 <h1>[% msg('This is a PEF::Front Demo Blog') %]</h1>
 [% articles = "get articles".model(offset => articles_offset, limit => 5) %]
-  [% FOREACH article IN articles.articles %]
-    <h3>[% article.title %]</h3>
-    <p>[% article.content %]</p>
-    [% IF articles.count > articles_offset + 5 %]
-    <a href="[% defults.path_info %]/[% articles_offset + 5 %]">Next</a>
-    [% END %]
-  [% END %]
+[% FOREACH article IN articles.articles %]
+  <h3>[% article.title %]</h3>
+  <p>[% article.content %]</p>
+[% END %]
+[% IF articles_offset > 5 %]
+  <a href="[% defults.path_info %]/[% articles_offset - 5 %]">Previous</a>
+[% END %]
+[% IF articles.count > articles_offset + 5 %]
+  <a href="[% defults.path_info %]/[% articles_offset + 5 %]">Next</a>
+[% END %]
 </body>
 </html>
