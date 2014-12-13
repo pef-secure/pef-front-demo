@@ -8,7 +8,7 @@
 </head>
 
 <body>
-[% IF form.cookie; articles_offset = form.cookie %]
+[% IF form.cookie; articles_offset = 0 + form.cookie %]
 [% ELSE; articles_offset = 0 %]
 [% END %]
 <h1>[% msg('This is a PEF::Front Demo Blog') %]</h1>
@@ -17,15 +17,16 @@
   <h3>[% article.title %]</h3>
   <p>[% article.content %]</p>
 [% END %]
+[% art_loc = "/" ~ path_info.split("/").1 %]
 [% IF articles_offset >= 5 %]
   [% IF articles_offset == 0 %]
-  <a href="[% path_info %]">Next</a>
+  <a href="[% art_loc %]">Next</a>
   [% ELSE %]
-  <a href="[% path_info %]/[% articles_offset - 5 %]">Next</a>
+  <a href="[% art_loc %]/[% articles_offset - 5 %]">Next</a>
   [% END %]
 [% END %]
 [% IF articles.count > articles_offset + 5 %]
-  <a href="[% path_info %]/[% articles_offset + 5 %]">Previous</a>
+  <a href="[% art_loc %]/[% articles_offset + 5 %]">Previous</a>
 [% END %]
 </body>
 </html>
