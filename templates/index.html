@@ -19,7 +19,7 @@
 [% END %]
 [% art_loc = "/" ~ path_info.split("/").1 %]
 [% IF articles_offset >= 5 %]
-  [% IF articles_offset == 0 %]
+  [% IF articles_offset == 5 %]
   <a href="[% art_loc %]">Next</a>
   [% ELSE %]
   <a href="[% art_loc %]/[% articles_offset - 5 %]">Next</a>
