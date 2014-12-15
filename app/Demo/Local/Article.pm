@@ -1,5 +1,5 @@
 package Demo::Local::Article;
-use DBIx::Struct qw($conn hash_ref_slice);
+use DBIx::Struct qw(connector hash_ref_slice);
 use Demo::Common;
 
 sub get_articles {
@@ -27,7 +27,7 @@ sub get_article_with_comments {
 	return {
 		result   => "OK",
 		article  => one_row(article => $req->{id_article})->filter_timestamp->data,
-		comments => $conn->run(
+		comments => connector->run(
 			sub {
 				$_->selectall_arrayref(
 					q{
