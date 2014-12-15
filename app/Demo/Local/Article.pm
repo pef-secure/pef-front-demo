@@ -45,7 +45,7 @@ sub get_article_with_comments {
 							where c.id_comment_parent = cs.id_comment
 						) select * from article_comments order by path, id_comment
 					},
-					Slice => {},
+					{Slice => {}},
 					$req->{id_article}
 				);
 			}
