@@ -20,6 +20,7 @@ Used Debian 7 packages:
 * libxml-simple-perl
 * libyaml-libyaml-perl
 * libsql-abstract-perl
+* liblocale-po-perl
 
 Used framework repositories:
 * https://github.com/pef-secure/dbix-struct.git
