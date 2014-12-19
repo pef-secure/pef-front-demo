@@ -24,9 +24,17 @@ sub get_articles {
 
 sub get_article_with_comments {
 	my ($req, $defaults) = @_;
+	my $article = one_row(article => $req->{id_article});
+	return {
+		result => "NOARTICLE",
+		answer => "No such article"
+	} unless $article;
+	$article = $article->filter_timestamp->data;
+	my $author = one_row(author => $article->{id_author})->name;
 	return {
 		result   => "OK",
-		article  => one_row(article => $req->{id_article})->filter_timestamp->data,
+		article  => $article,
+		author   => $author,
 		comments => connector->run(
 			sub {
 				$_->selectall_arrayref(
