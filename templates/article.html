@@ -36,8 +36,8 @@
 	<!-- main -->
 	<main class="main">
 
-[% article = "get article with comments".model(id_article => 0 + form.cookie) %]
-[% IF article.result eq 'OK' %]
+[% rart = "get article with comments".model(id_article => 0 + form.cookie) %]
+[% IF rart.result eq 'OK' %]
 
 		<!-- articles -->
 		<div class="articles">
@@ -47,22 +47,22 @@
 				<!-- text -->
 				<div class="text">
 
-					<h3><a href="#">[% article.title %]</a></h3>
+					<h3><a href="#">[% rart.article.title %]</a></h3>
 
-					<p class="author">[% article.author %]<time class="date">([% article.pub_date %])</time></p>
-					[% article.content %]
+					<p class="author">[% rart.article.author %]<time class="date">([% rart.article.pub_date %])</time></p>
+					[% rart.article.content %]
 				</div><!-- text -->
 				<!-- comments -->
 				<div class="comments">
 
 					<!-- show comments link -->
 					<div class="show-comments-box">
-						<a href="#" class="show-comments-link">123 comments</a>
+						<a href="#" class="show-comments-link">[% m('$1 comments', rart.comments.size) %]</a>
 					</div>
 
 					<!-- comments list -->
 					<div class="comments">
-[% FOR comment in article.comments %]
+[% FOR comment in rart.comments %]
 						<!-- comment -->
 						<div class="comment" style="margin-left: [% comment.depth * 20 %]px;">
 							<p><time class="date">([% comment.pub_date %])</time> [% comment.comment %]</p>
@@ -79,7 +79,7 @@
 		
 		</div><!-- articles -->
 [% ELSE %]
-<h1>[% article.answer %]</h1>
+<h1>[% rart.answer %]</h1>
 [% END %]
 
 	</main><!-- main -->
