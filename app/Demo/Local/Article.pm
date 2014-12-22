@@ -29,12 +29,16 @@ sub get_article_with_comments {
 		result => "NOARTICLE",
 		answer => "No such article"
 	} unless $article;
+	#
+	#	my $author = one_row(author => $article->id_author)->name;
+	# next statement a little more prettier
+	my $author = $article->Author->name;
+	# transform object into hash
 	$article = $article->filter_timestamp->data;
-	my $author = one_row(author => $article->{id_author})->name;
+	$article->{author} = $author;
 	return {
 		result   => "OK",
 		article  => $article,
-		author   => $author,
 		comments => connector->run(
 			sub {
 				$_->selectall_arrayref(
