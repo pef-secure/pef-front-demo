@@ -28,4 +28,10 @@ params:
     can_number: [0, 1]
     default: 0
   money: ^$RE{num}{decimal}{-places=>"0,2"}$
-   
+# 
+expected:
+  - result: DEFAULT
+    answer:
+      ^optional: true
+    answer_args@:
+      ^optional: true

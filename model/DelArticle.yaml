@@ -4,3 +4,8 @@ params:
   id_article: $positive_integer
   auth: $auth
 model: Article::delete_article_with_comments
+expected:
+  - result: OK
+  - result: NEED_LOGIN
+    answer:
+  - result: $DEFAULT

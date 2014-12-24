@@ -3,3 +3,23 @@ params:
   ip: $ip
   id_article: $positive_integer
 model: Article::get_article_with_comments
+expected:
+  - result: OK
+    article:
+      id_article:
+      title:
+      content:
+      pub_date:
+      id_author:
+      author:
+    comments@:
+      depth:
+      path:
+      id_comment:
+      id_comment_parent:
+      comment:
+      author:
+      pub_date:
+  - result: NOARTICLE
+    answer:
+  - result: $DEFAULT

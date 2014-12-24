@@ -5,3 +5,9 @@ params:
     base: $auth
     optional: true
 model: Author::get_info
+expected:
+  - result: OK
+    id_author:
+    name:
+    login:
+  - result: $DEFAULT

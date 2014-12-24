@@ -8,3 +8,9 @@ params:
   content:
     max-size: 4000
 model: Article::add_article
+expected:
+  - result: OK
+    id_article:
+  - result: NEED_LOGIN
+    answer:
+  - result: $DEFAULT

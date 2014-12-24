@@ -11,3 +11,7 @@ params:
     base: $positive_integer
 extra_params: ignore
 model: PEF::Front::Captcha::make_captcha
+expected:
+  - result: OK
+    code:
+  - result: $DEFAULT

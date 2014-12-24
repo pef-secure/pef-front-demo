@@ -31,7 +31,7 @@ sub get_article_with_comments {
 	} unless $article;
 	#
 	#	my $author = one_row(author => $article->id_author)->name;
-	# next statement a little more prettier
+	# next statement is a little bit prettier
 	my $author = $article->Author->name;
 	# transform object into hash
 	$article = $article->filter_timestamp->data;
@@ -44,7 +44,7 @@ sub get_article_with_comments {
 				$_->selectall_arrayref(
 					q{
 						with recursive article_comments(depth, path) as (
-							select 1, array[id_comment] path, id_comment, 
+							select 1 depth, array[id_comment] path, id_comment, 
 								id_comment_parent, comment, author,
 								date_trunc('seconds', pub_date) pub_date
 							from comment

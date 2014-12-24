@@ -4,3 +4,15 @@ params:
   limit: $limit
   offset: $offset    
 model: Article::get_articles
+expected:
+  - result: OK
+    articles@:
+      id_article:
+      title:
+      content:
+      pub_date:
+      id_author:
+      author:
+      comment_count:
+    count:
+  - result: $DEFAULT

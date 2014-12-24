@@ -16,3 +16,11 @@ result:
   DEFAULT:
     redirect: TT "/appLogin?message=${response.answer}" ~ (form.back_url? "&back_url=${form.back_url}":"")
     unset-cookie: auth
+expected:
+  - result: OK
+    expires:
+    auth:
+  - result: PASSWORD
+    answer:
+  - result: $DEFAULT
+    

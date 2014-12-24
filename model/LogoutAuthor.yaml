@@ -9,3 +9,7 @@ result:
   DEFAULT:
     redirect: /
     unset-cookie: auth
+expected:
+  - result: OK
+  - result: $DEFAULT
+    

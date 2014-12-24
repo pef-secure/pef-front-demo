@@ -4,3 +4,8 @@ params:
   id_comment: $positive_integer
   auth: $auth
 model: Article::delete_comment_with_tree
+expected:
+  - result: OK
+  - result: NEED_LOGIN
+    answer:
+  - result: $DEFAULT

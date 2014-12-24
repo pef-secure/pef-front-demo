@@ -21,3 +21,9 @@ params:
   captcha_hash:
     min-size: 5
 model: Article::add_comment
+expected:
+  - result: OK
+    id_comment:
+  - result: NO_CAPTCHA
+    answer:
+  - result: $DEFAULT
