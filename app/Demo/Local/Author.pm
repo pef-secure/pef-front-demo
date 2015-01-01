@@ -31,7 +31,7 @@ sub login {
 			'author_auth',
 			id_author => $author->id_author,
 			auth      => $auth,
-			expires   => [\"now() + interval ?", $expires]
+			expires   => [\"now() + interval '?'", $expires]
 		);
 		return {
 			result  => "OK",
