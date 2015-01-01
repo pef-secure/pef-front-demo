@@ -1,3 +1,10 @@
+	<!-- header -->
+	<header class="header">
+		<div class="header-inner">
+[% author = "get author info".model %]
+			<!-- logo -->
+			<a href="/" class="logo">[% m('This is a PEF::Front Demo Blog') %]</a>
+[% IF author.result ne 'OK' %]
 			<!-- login -->
 			<div class="login">
 				<form method="post" action="/ajaxLoginAuthor" id="login_form">
@@ -9,3 +16,11 @@
 					</div>
 				</form>
 			</div><!-- login -->
+[% ELSE %]
+			<div class="user-info">
+				<strong>[% m('Hello $1', author.name) %]</strong>
+				<input type="button" class="btn" value="Logout">
+			</div><!-- user info -->
+		</div>
+[% END %]
+	</header><!-- header -->
