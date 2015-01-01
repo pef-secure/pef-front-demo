@@ -1,7 +1,9 @@
 ---
 params:
   ip: $ip
-  login: $limit4_40str
+  login:
+      base: limit40str
+      min-size: 1
   password: $limit4_40str
 model: Author::login
 result:
