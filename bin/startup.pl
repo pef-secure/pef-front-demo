@@ -9,6 +9,8 @@ use DBIx::Struct (
 	error_class      => 'DBIx::Struct::Error::Hash'
 );
 
+DBIx::Struct::connect();
+
 use PEF::Front::Route ('/index' => ['/appIndex', 'R']);
 
 PEF::Front::Route->to_app();
