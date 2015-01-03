@@ -8,7 +8,7 @@ our @EXPORT = qw{
 sub get_author_from_auth {
 	my $auth = $_[0];
 	DBC::AuthorAuth->delete({expires => {'<', \"now()"}});
-	my $author_auth = one_row(author_auth => $auth);
+	my $author_auth = one_row(author_auth => {auth => $auth});
 	return if not $author_auth;
 	$author_auth->Author;
 }
