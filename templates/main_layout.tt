@@ -38,10 +38,13 @@
 		</div>
 	</header><!-- header -->
 
+<!-- page -->
+<div class="page">
 	<!-- main -->
 	<main class="main">
 [% content %]
 	</main><!-- main -->
+</div><!-- page -->
 
 
 <!-- footer -->
