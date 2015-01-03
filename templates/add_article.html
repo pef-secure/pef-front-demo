@@ -1,26 +1,6 @@
-<!doctype html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title></title>
-	<meta name="keywords" content="">
-	<meta name="description" content="">
-	<!--[if lt IE 9]> <script src="/jss/lib/html5shiv.js"></script> <![endif]-->
-	<link rel="stylesheet" href="/styles/styles.css">
-</head>
-
-<body>
-
-
-<!-- page -->
-<div class="page">
-
-
-[% INCLUDE header.tt %]
-
-	<!-- main -->
-	<main class="main">
-
+[% WRAPPER main_layout.tt 
+    title = "Add new article"
+%]
 
 		<!-- add article -->
 		<div class="add-article">
@@ -37,48 +17,4 @@
 			</form>
 			
 		</div><!-- articles -->
-
-
-	</main><!-- main -->
-
-
-</div><!-- page -->
-
-
-<!-- footer -->
-<footer class="footer">
-	<div class="footer-inner">
-
-		<!-- site name -->
-		<div class="site-name">PEF</div>
-
-		<!-- copyrights -->
-		<div class="copyrights">All rights reserved</div>
-
-	</div>
-</footer><!-- footer -->
-
-
-<!-- popup -->
-<div class="popup hidden" id="popup_box">
-	<div class="popup-bg" id="popup_bg"></div>
-	<div class="popup-box">
-		<input type="button" class="popup-close" id="popup_close_btn" value="">
-		<div class="popup-text" id="popup_text"></div>
-	</div>
-</div><!-- popup -->
-
-
-<script type="text/javascript" src="/jss/lib/jquery-2.1.3.min.js"></script>
-
-<script type="text/javascript" src="/jss/common/json.js"></script>
-<script type="text/javascript" src="/jss/common/msg.js"></script>
-<script type="text/javascript" src="/jss/common/popup.js"></script>
-<script type="text/javascript" src="/jss/common/loader.js"></script>
-
-<script type="text/javascript" src="/jss/login_form.js"></script>
-<script type="text/javascript" src="/jss/add_article.js"></script>
-
-
-</body>
-</html>
+[% END WRAPPER %]
