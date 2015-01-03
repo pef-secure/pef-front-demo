@@ -41,7 +41,7 @@ article.checkCommentForm = function () {
 // send comment form
 article.sendCommentForm = function () {
 	var query = 'comment=' + article.commentForm.comment.val() + 
-				'&captcha_code=' + article.commentForm.captchaCode.val() + 
+				'&captcha_code=' + article.commentForm.captcha.val() + 
 				'&captcha_hash=' + article.commentForm.captchaHash.val() + 
 				'&author=' + article.commentForm.author.val();
 	if ( article.commentForm.idArticle.val() != '' ) {
@@ -87,7 +87,7 @@ article.showCommentForm = function ( commentFor, id ) {
 	}
 
 	article.commentForm.comment.val ( '' );
-	article.commentForm.captchaCode.val ( '' );
+	article.commentForm.captcha.val ( '' );
 
 	article.commentFormBox.insertAfter ( clickedLink.parent() );
 	article.commentFormBox.removeClass ( 'hidden' );
