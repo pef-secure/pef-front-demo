@@ -31,17 +31,13 @@ article.checkCommentForm = function () {
 	if ( article.commentForm.comment.val() == '' ) {
 		errors += msg.fieldIsEmpty.replace ( '[% field_name %]', msg.comment );
 	}
-	if ( article.commentForm.captcha.val() == '' ) {
-		errors += msg.fieldIsEmpty.replace ( '[% field_name %]', msg.captcha );
-	}
-
 	return errors;
 };
 
 // send comment form
 article.sendCommentForm = function () {
 	var query = 'comment=' + article.commentForm.comment.val() + 
-				'&captcha_code=' + article.commentForm.captcha.val() + 
+				'&captcha=' + article.commentForm.captcha.val() + 
 				'&captcha_hash=' + article.commentForm.captchaHash.val() + 
 				'&author=' + article.commentForm.author.val();
 	if ( article.commentForm.idArticle.val() != '' ) {

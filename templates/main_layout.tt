@@ -14,9 +14,9 @@
 	<!-- header -->
 	<header class="header">
 		<div class="header-inner">
-[% author = "get author info".model %]
 			<!-- logo -->
 			<a href="/" class="logo">[% m('This is a PEF::Front Demo Blog') %]</a>
+[% author = "get author info".model %]
 [% IF author.result ne 'OK' %]
 			<!-- login -->
 			<div class="login">
