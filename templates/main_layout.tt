@@ -34,17 +34,14 @@
 				<strong>[% m('Hello $1', author.name) %]</strong>
 				<input type="button" class="btn" value="Logout">
 			</div><!-- user info -->
-		</div>
 [% END %]
+		</div>
 	</header><!-- header -->
 
 	<!-- main -->
 	<main class="main">
 [% content %]
 	</main><!-- main -->
-
-
-</div><!-- page -->
 
 
 <!-- footer -->
