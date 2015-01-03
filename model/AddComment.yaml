@@ -15,7 +15,7 @@ params:
   comment:
     max-size: 1000
     filter: [ s/</&lt;/g, s/>/&gt;/g ]
-  captcha_code:
+  captcha:
     min-size: 5
     captcha: captcha_hash
   captcha_hash:

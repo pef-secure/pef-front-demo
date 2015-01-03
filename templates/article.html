@@ -61,9 +61,10 @@
 						<input type="hidden" name="id_comment_parent" id="id_comment_parent">
 
 						<textarea name="comment" id="comment"></textarea>
-						<input type="hidden" name="captcha_hash" id="captcha_hash">
-						<img src="../images/captcha.png">
-						<input type="text" class="fld w-100" name="captcha_code" id="captcha_code" autocomplete="off">
+						[% captcha="captcha".model() -%]
+						<input type="hidden" name="captcha_hash" id="captcha_hash" value="[% captcha.code %]" >
+						<img src="[% config('www_static_captchas_path') %][% captcha.code %].jpg">
+						<input type="text" class="fld w-100" name="captcha" id="captcha" autocomplete="off">
 
 						<div class="btn-with-loader disp-ib">
 							<input type="submit" class="btn ml-10" id="add_comment_btn" value="Leave a comment">

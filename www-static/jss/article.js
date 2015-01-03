@@ -21,7 +21,7 @@ article.commentForm.idArticle = $( '#id_article' );
 article.commentForm.idCommentParent = $( '#id_comment_parent' );
 article.commentForm.captchaHash = $( '#captcha_hash' );
 article.commentForm.comment = $( '#comment' );
-article.commentForm.captchaCode = $( '#captcha_code' );
+article.commentForm.captcha = $( '#captcha' );
 
 
 // check comment form
@@ -31,7 +31,7 @@ article.checkCommentForm = function () {
 	if ( article.commentForm.comment.val() == '' ) {
 		errors += msg.fieldIsEmpty.replace ( '[% field_name %]', msg.comment );
 	}
-	if ( article.commentForm.captchaCode.val() == '' ) {
+	if ( article.commentForm.captcha.val() == '' ) {
 		errors += msg.fieldIsEmpty.replace ( '[% field_name %]', msg.captcha );
 	}
 
@@ -123,7 +123,7 @@ article.buildComment = function ( commentId, depth ) {
 article.deleteArticle = function ( articleId ) {
 	$.ajax({
 		type: 'POST',
-		url: '/www-static/ajax/ok',
+		url: '/ajaxDelArticle',
 		data: 'id_article=' + articleId,
 		success: function ( response ) {
 			loader.hide ( 'add_comment' );
@@ -144,7 +144,7 @@ article.deleteArticle = function ( articleId ) {
 article.deleteComment = function ( commentId ) {
 	$.ajax({
 		type: 'POST',
-		url: '/www-static/ajax/ok',
+		url: '/ajaxDelCommentWithTree',
 		data: 'id_comment=' + commentId,
 		success: function ( response ) {
 			loader.hide ( 'add_comment' );
