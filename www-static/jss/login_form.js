@@ -15,10 +15,10 @@ loginForm.check = function () {
 	var errors = '';
 
 	if ( loginForm.login.val() == '' ) {
-		errors += msg.fieldIsEmpty.replace ( '[% field_name %]', msg.login );
+		errors += msg.fieldIsEmpty.replace ( '{field_name}', msg.login );
 	}
 	if ( loginForm.password.val() == '' ) {
-		errors += msg.fieldIsEmpty.replace ( '[% field_name %]', msg.password );
+		errors += msg.fieldIsEmpty.replace ( '{field_name}', msg.password );
 	}
 
 	return errors;
@@ -32,7 +32,7 @@ loginForm.send = function () {
 		data: 'login=' + loginForm.login.val() + '&password=' + loginForm.password.val(),
 		success: function ( response ) {
 			loader.hide ( 'login' );
-			response = JSON.parse ( response );
+			//response = JSON.parse ( response );
 			switch ( response.result ) {
 				case 'OK':
 					window.location.reload();

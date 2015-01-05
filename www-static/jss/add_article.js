@@ -32,7 +32,6 @@ addArticle.send = function () {
 		data: 'title=' + addArticle.title.val() + '&content=' + addArticle.content.val(),
 		success: function ( response ) {
 			loader.hide ( 'add_article' );
-			response = JSON.parse ( response );
 			switch ( response.result ) {
 				case 'OK':
 					window.location = '/appArticle/' + response.id_article;

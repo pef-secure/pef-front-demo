@@ -29,7 +29,7 @@ article.checkCommentForm = function () {
 	var errors = '';
 
 	if ( article.commentForm.comment.val() == '' ) {
-		errors += msg.fieldIsEmpty.replace ( '[% field_name %]', msg.comment );
+		errors += msg.fieldIsEmpty.replace ( '{field_name}', msg.comment );
 	}
 	return errors;
 };
@@ -53,7 +53,7 @@ article.sendCommentForm = function () {
 		data: query,
 		success: function ( response ) {
 			loader.hide ( 'add_comment' );
-			response = JSON.parse ( response );
+			//response = JSON.parse ( response );
 			switch ( response.result ) {
 				case 'OK':
 					article.buildComment ( response.id_comment );
@@ -123,7 +123,7 @@ article.deleteArticle = function ( articleId ) {
 		data: 'id_article=' + articleId,
 		success: function ( response ) {
 			loader.hide ( 'add_comment' );
-			response = JSON.parse ( response );
+			//response = JSON.parse ( response );
 			switch ( response.result ) {
 				case 'OK':
 					$( '#article_' + articleId ).remove();
@@ -144,7 +144,7 @@ article.deleteComment = function ( commentId ) {
 		data: 'id_comment=' + commentId,
 		success: function ( response ) {
 			loader.hide ( 'add_comment' );
-			response = JSON.parse ( response );
+			//response = JSON.parse ( response );
 			switch ( response.result ) {
 				case 'OK':
 					$( '#comment_' + commentId ).remove();
