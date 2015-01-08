@@ -26,7 +26,7 @@ zFormz.ajax = function(id_form, reactor) {
 				type:     form.attr('method'),
 				dataType: 'json',
 				success:  function(response) {
-					ajax.response = response;
+					zFormz.response = response;
 					reactor();
 				}
 			});
