@@ -93,7 +93,7 @@
 </script>
 
 <script type="text/javascript" src="/jss/lib/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="/jss/lib/webshim/polyfiller.js"></script>
+<!-- script type="text/javascript" src="/jss/lib/webshim/polyfiller.js"></script -->
 
 <script type="text/javascript" src="/jss/common/popup.js"></script>
 <script type="text/javascript" src="/jss/common/loader.js"></script>
