@@ -1,3 +1,4 @@
+var zFormz = {};
 // fields
 zFormz.fields = 'input:not([type="button"][type="submit"]),select,textarea';
 
