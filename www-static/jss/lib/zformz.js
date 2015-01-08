@@ -16,8 +16,15 @@ zFormz.checkForm = function(form) {
 	return true;
 }
 
-zFormz.ajax = function(id_form, reactor) {
+zFormz.default_reactor_others = function() {
+	popup.show ( zFormz.response.result + ': ' + zFormz.response.answer );
+}
+
+zFormz.ajax = function(id_form, reactor_ok, reactor_others) {
 	var form = $("#" + id_form);
+	if (typeof reactor_others === "undefined") {
+		reactor_others = zFormz.default_reactor_others;
+	}
 	form.submit ( function () {
 		if(zFormz.checkForm(form)) {
 			$.ajax({
@@ -27,7 +34,13 @@ zFormz.ajax = function(id_form, reactor) {
 				dataType: 'json',
 				success:  function(response) {
 					zFormz.response = response;
-					reactor();
+					switch ( zFormz.response.result ) {
+					case 'OK':
+						reactor_ok();
+						break;
+					default:
+						reactor_others();
+					}
 				}
 			});
 		}

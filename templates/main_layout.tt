@@ -99,15 +99,7 @@
 <script type="text/javascript" src="/jss/common/loader.js"></script>
 <script type="text/javascript" src="/jss/lib/zformz.js"></script>
 <script type="text/javascript">
-	zFormz.ajax("login_form", function() {
-		switch ( zFormz.response.result ) {
-			case 'OK':
-				window.location.reload();
-				break;
-			default:
-				popup.show ( response.result + ': ' + response.answer );
-		}
-	});
+	zFormz.ajax("login_form", function() { window.location.reload(); });
 </script>
 
 <!-- script type="text/javascript" src="/jss/login_form.js"></script -->
