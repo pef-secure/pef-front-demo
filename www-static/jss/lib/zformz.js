@@ -21,10 +21,11 @@ zFormz.ajax = function(id_form, reactor) {
 	form.submit ( function () {
 		if(zFormz.checkForm(form)) {
 			$.ajax({
-				url:     form.attr('action'),
-				data:    zFormz.getFormData(form),
-				type:    form.attr('method'),
-				success: function(response) {
+				url:      form.attr('action'),
+				data:     zFormz.getFormData(form),
+				type:     form.attr('method'),
+				dataType: 'json',
+				success:  function(response) {
 					ajax.response = response;
 					reactor();
 				}
