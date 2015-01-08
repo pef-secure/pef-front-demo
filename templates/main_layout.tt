@@ -97,10 +97,22 @@
 
 <script type="text/javascript" src="/jss/common/popup.js"></script>
 <script type="text/javascript" src="/jss/common/loader.js"></script>
+<script type="text/javascript" src="/jss/lib/zformz.js"></script>
+<script type="text/javascript">
+	zFormz.ajax("login_form", function() {
+		switch ( ajax.response.result ) {
+			case 'OK':
+				window.location.reload();
+				break;
+			default:
+				popup.show ( response.result + ': ' + response.answer );
+		}
+	});
+</script>
 
-<script type="text/javascript" src="/jss/login_form.js"></script>
-<script type="text/javascript" src="/jss/add_article.js"></script>
-<script type="text/javascript" src="/jss/article.js"></script>
+<!-- script type="text/javascript" src="/jss/login_form.js"></script -->
+<!-- script type="text/javascript" src="/jss/add_article.js"></script -->
+<!-- script type="text/javascript" src="/jss/article.js"></script -->
 
 </body>
 </html>
