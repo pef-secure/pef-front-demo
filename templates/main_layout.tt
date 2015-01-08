@@ -100,7 +100,7 @@
 <script type="text/javascript" src="/jss/lib/zformz.js"></script>
 <script type="text/javascript">
 	zFormz.ajax("login_form", function() {
-		switch ( ajax.response.result ) {
+		switch ( zFormz.response.result ) {
 			case 'OK':
 				window.location.reload();
 				break;
