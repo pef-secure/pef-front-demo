@@ -11,7 +11,7 @@ sub get_info {
 		result => "NEED_LOGIN",
 		answer => 'You have to login for this operation'
 	  }
-	  if not $author;
+	  unless $author;
 	return {
 		result => "OK",
 		hash_ref_slice $author->filter_timestamp->data, qw(id_author name login)
