@@ -12,10 +12,10 @@ use DBIx::Struct (
 DBIx::Struct::connect();
 
 use PEF::Front::Route (
-	'/'             => ['/index', 'R'],
-	'/index(.*)'    => '/appIndex$1',
-	'/article/(.*)' => '/appArticle/$1',
-	'/add'          => '/appAddArticle'
+	'/'               => ['/index', 'R'],
+	qr'/index(.*)'    => '/appIndex$1',
+	qr'/article/(.*)' => '/appArticle/$1',
+	'/add'            => '/appAddArticle'
 );
 
 PEF::Front::Route->to_app();
