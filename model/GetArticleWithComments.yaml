@@ -20,6 +20,6 @@ expected:
       comment:
       author:
       pub_date:
-  - result: NOARTICLE
+  - result: NO_ARTICLE
     answer:
   - result: $DEFAULT

@@ -5,20 +5,22 @@ use Demo::Common;
 sub get_articles {
 	my ($req, $defaults) = @_;
 	my $articles = all_rows(
-		article => -order_by => {-desc => 'id_article'},
-		-limit  => $req->{limit},
-		-offset => $req->{offset},
+		[   "article a" => -join => "author w",
+			-columns => ['a.*', 'w.name author']
+		],
+		-order_by => {-desc => 'id_article'},
+		-limit    => $req->{limit},
+		-offset   => $req->{offset},
 		sub { $_->filter_timestamp->data }
 	);
 	for my $article (@$articles) {
-		$article->{comment_count} = one_row('select count(*) from comment',
-			{hash_ref_slice $article, 'id_article'})->count;
-		$article->{author} = one_row(author => $article->{id_author})->name;
+		$article->{comment_count} =
+		  one_row([comment => -columns => 'count(*)'], {hash_ref_slice $article, 'id_article'})->count;
 	}
 	return {
 		result   => "OK",
 		articles => $articles,
-		count    => one_row('select count(*) from article')->count
+		count    => one_row([article => -columns => 'count(*)'])->count
 	};
 }
 
@@ -26,7 +28,7 @@ sub get_article_with_comments {
 	my ($req, $defaults) = @_;
 	my $article = one_row(article => $req->{id_article});
 	return {
-		result => "NOARTICLE",
+		result => "NO_ARTICLE",
 		answer => "No such article"
 	} unless $article;
 	#
