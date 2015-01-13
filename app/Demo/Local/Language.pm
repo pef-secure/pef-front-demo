@@ -7,7 +7,7 @@ sub get_langs {
 	return {
 		result => "OK",
 		langs  => all_rows(
-			[nls_lang => -columns => ['short lang', 'name language']],
+			[nls_lang => -columns => ['short as lang', 'name as language']],
 			{-bool    => 'is_active'},
 			sub { $_->data }
 		)
