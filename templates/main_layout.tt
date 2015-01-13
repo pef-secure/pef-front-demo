@@ -10,7 +10,14 @@
 </head>
 
 <body>
-
+[% langs = "get langs".model %]
+[% FOR l in langs.langs %]
+<form method="post" action="/ajaxSetLang" class="validate ajax lang" id="[% l.lang %]_form">
+<input type="hidden" name="lang" value="[% l.lang %]">
+<input type="submit" class="btn w-100p" value="[% l.language %]">
+</form>
+<span class="[% l.language %]">l.lang</span>
+[% END %]
 	<!-- header -->
 	<header class="header">
 		<div class="header-inner">
@@ -109,6 +116,7 @@
 <script type="text/javascript" src="/jss/common/zform_init.js"></script>
 
 <script type="text/javascript" src="/jss/login_form.js"></script>
+<script type="text/javascript" src="/jss/lang_form.js"></script>
 <script type="text/javascript" src="/jss/add_article.js"></script>
 <script type="text/javascript" src="/jss/article.js"></script>
 
