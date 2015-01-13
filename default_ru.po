@@ -75,3 +75,15 @@ msgstr "Необходимо войти в систему для этой опе
 
 msgid "Wrong password"
 msgstr "Неверный пароль"
+
+msgid "Field \"{field_name}\" is empty"
+msgstr "Поле \"{field_name}\" пустое"
+
+msgid "Field \"{field_name}\" is incorrect"
+msgstr "Поле \"{field_name}\" заполнено неверно"
+
+msgid "<p>Article has been deleted successfully.</p><p>"
+"<a href=\"/index\" class=\"btn mb-0\">Go to main page</a></p>"
+msgstr "<p>Статья успешно удалена.</p><p>"
+"<a href=\"/index\" class=\"btn mb-0\">На главную</a></p>"
+

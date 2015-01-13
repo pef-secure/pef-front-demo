@@ -73,3 +73,12 @@ msgstr ""
 msgid "Wrong password"
 msgstr ""
 
+msgid "Field \"{field_name}\" is empty"
+msgstr ""
+
+msgid "Field \"{field_name}\" is incorrect"
+msgstr ""
+
+msgid "<p>Article has been deleted successfully.</p><p>"
+"<a href=\"/index\" class=\"btn mb-0\">Go to main page</a></p>"
+msgstr ""
