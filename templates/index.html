@@ -21,7 +21,7 @@
 					[% article.content %]
 
 				</div><!-- text -->
-
+				<p>[% mn('$1 comments', article.comment_count, article.comment_count) %]</p>
 			</article><!-- article -->
 [% END %]
 		</div><!-- articles -->
@@ -30,10 +30,10 @@
   [% IF articles_offset == 5 %]
   <a href="[% art_loc %]">Next</a>
   [% ELSE %]
-  <a href="[% art_loc %]/[% articles_offset - 5 %]">Next</a>
+  <a href="[% art_loc %]/[% articles_offset - 5 %]">[% m('Next') %]</a>
   [% END %]
 [% END %]
 [% IF articles.count > articles_offset + 5 %]
-  <a href="[% art_loc %]/[% articles_offset + 5 %]">Previous</a>
+  <a href="[% art_loc %]/[% articles_offset + 5 %]">[% m('Previous') %]</a>
 [% END %]
 [% END WRAPPER %]
