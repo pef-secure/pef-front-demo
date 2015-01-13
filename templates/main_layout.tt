@@ -92,7 +92,7 @@
 	msg.error = {};
 	msg.error.field = {};
 	msg.error.field.empty = '[% m('Field "{field_name}" is empty') %]';
-	msg.error.field.incorrect = '[% m('Field "{field_name}" is incorrect') %];
+	msg.error.field.incorrect = '[% m('Field "{field_name}" is incorrect') %]';
 
 	// other messages
 	msg.articleHasBeenDeleted = '[% m('<p>Article has been deleted successfully.</p><p><a href="/index" class="btn mb-0">Go to main page</a></p>') %]';
