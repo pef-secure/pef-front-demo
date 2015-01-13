@@ -95,9 +95,9 @@
 						<input type="hidden" name="id_comment_parent" id="id_comment_parent">
 
 						<textarea name="comment" id="comment" required minlength="4" maxlength="1000"></textarea>
+						<input type="hidden" name="captcha_hash" id="captcha_hash_1">
     [% IF author.result ne 'OK' -%]
         [% captcha="captcha".model() -%]
-						<input type="hidden" name="captcha_hash" id="captcha_hash_1">
 						<img src="../images/captcha.png" id="captcha_pic_1">
 						<input type="button" class="captcha-reload-btn" id="captcha_reload_btn_1">
 						<input type="text" class="fld w-100" name="captcha" id="captcha_1" autocomplete="off" required minlength="5" maxlength="7">
