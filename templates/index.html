@@ -19,9 +19,9 @@
 
 					<p class="author">[% article.author %]<time class="date">([% article.pub_date %])</time></p>
 					[% article.content %]
+					<p>[% mn('$1 comments', article.comment_count, article.comment_count) %]</p>
 
 				</div><!-- text -->
-				<p>[% mn('$1 comments', article.comment_count, article.comment_count) %]</p>
 			</article><!-- article -->
 [% END %]
 		</div><!-- articles -->
