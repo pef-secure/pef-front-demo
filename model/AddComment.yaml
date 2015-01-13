@@ -6,7 +6,7 @@ params:
     optional: true
   id_article: $positive_integer
   id_comment_parent:
-    base: $positive_integer
+    base: $integer_or_empty
     filter: Empty::to_undef
   author:
     base: $limit40str

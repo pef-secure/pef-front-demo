@@ -23,6 +23,7 @@ params:
     regex: ^\d+$
     max-size: 10
   positive_integer: ^\d+$
+  integer_or_empty: ^\d+$|^$
   any_integer: ^$RE{num}{int}$
   bool:
     can_number: [0, 1]
