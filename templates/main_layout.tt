@@ -14,9 +14,8 @@
 [% FOR l in langs.langs %]
 <form method="post" action="/ajaxSetLang" class="validate ajax lang" id="[% l.lang %]_form">
 <input type="hidden" name="lang" value="[% l.lang %]">
-<input type="submit" class="btn w-100p" value="[% l.language %]">
+<input type="submit" class="btn" value="[% l.language %]">
 </form>
-<span class="[% l.language %]">l.lang</span>
 [% END %]
 	<!-- header -->
 	<header class="header">
