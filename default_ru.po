@@ -1,29 +1,53 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: 2014-12-19 21:01+0100\n"
-"PO-Revision-Date: 2014-12-19 21:02+0100\n"
+"Project-Id-Version: PEF::Front Demo\n"
+"POT-Creation-Date: 2015-01-13 19:23+0100\n"
+"PO-Revision-Date: 2015-01-13 20:19+0100\n"
 "Last-Translator: name <name@email.name>\n"
-"Language-Team: \n"
+"Language-Team: PEF\n"
 "Language: Russian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
-"X-Poedit-KeywordsList: msg;m;mn\n"
+"X-Poedit-KeywordsList: m;mn\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: templates\n"
 
-#: templates/index.html:27 templates/article.html:30
+#: templates/main_layout.tt:18
 msgid "This is a PEF::Front Demo Blog"
-msgstr "Это демонстрационное приложение для фреймворка PEF::Front"
+msgstr "PEF::Front демо-блог"
 
-#: templates/article.html:60
-msgid "$1 comment"
-msgid_plural "$1 comments"
-msgstr[0] "$1 комментарй"
-msgstr[1] "$1 комментария"
-msgstr[2] "$1 комментариев"
+#: templates/main_layout.tt:34
+msgid "Hello $1"
+msgstr "Привет, $1!"
+
+#: templates/index.html:22 templates/article.html:51
+msgid "<span id=\"comments_number\">$1</span> comment"
+msgid_plural "<span id=\"comments_number\">$1</span> comments"
+msgstr[0] "<span id=\"comments_number\">$1</span> комментарий"
+msgstr[1] "<span id=\"comments_number\">$1</span> комментария"
+msgstr[2] "<span id=\"comments_number\">$1</span> комментариев"
+
+#: templates/index.html:33
+msgid "Next"
+msgstr "Следующие"
+
+#: templates/index.html:37
+msgid "Previous"
+msgstr "Предыдущие"
+
+msgid "No such article"
+msgstr "Нет такой статьи"
+
+msgid "Anonymous user must enter CAPTCHA"
+msgstr "Анонимные пользователи должны вводить CAPTCHA"
+
+msgid "You have to login for this operation"
+msgstr "Необходимо войти в систему для этой операции"
+
+msgid "Wrong password"
+msgstr "Неверный пароль"

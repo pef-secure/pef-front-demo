@@ -1,0 +1,14 @@
+---
+params:
+  ip: $ip
+  lang: ^\w\w$
+model: Language::set_lang
+result:
+  OK:
+    set-cookie:
+      lang:
+        value: TT response.lang
+        expires: 1 year
+expected:
+  - result: OK
+  - result: $DEFAULT

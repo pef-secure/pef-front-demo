@@ -1,0 +1,10 @@
+---
+params:
+  ip: $ip
+model: Language::get_langs
+expected:
+  - result: OK
+    langs@:
+      lang:
+      language:
+  - result: $DEFAULT
