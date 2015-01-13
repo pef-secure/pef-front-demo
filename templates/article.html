@@ -101,6 +101,8 @@
 						<img src="../images/captcha.png" id="captcha_pic_1">
 						<input type="button" class="captcha-reload-btn" id="captcha_reload_btn_1">
 						<input type="text" class="fld w-100" name="captcha" id="captcha_1" autocomplete="off" required minlength="5" maxlength="7">
+	[% ELSE -%]
+						<input type="hidden" name="captcha" value="nocheck">
 	[% END IF -%]
 						<div class="btn-with-loader disp-ib">
 							<input type="submit" class="btn ml-10" id="add_comment_btn" value="Leave a comment">
