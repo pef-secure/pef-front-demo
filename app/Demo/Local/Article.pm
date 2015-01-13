@@ -79,7 +79,7 @@ sub add_comment {
 		result     => "OK",
 		id_comment => new_row(
 			comment => hash_ref_slice $req,
-			qw(id_article id_comment_parent comment)
+			qw(id_article id_comment_parent comment author)
 		)->id_comment
 	};
 }
