@@ -11,63 +11,97 @@
   [% rart = "get article with comments".model(id_article => 0 + form.cookie) %]
   [% IF rart.result eq 'OK' %]
 
+    [% author = "get author info".model -%]
+
 		<!-- articles -->
 		<div class="articles">
 
 			<!-- article -->
 			<article class="article one-article" id="[% rart.article.id_article %]">
+
+				<input type="hidden" id="main_id_article" value="[% rart.article.id_article %]">
+    [% IF author.result ne 'OK' -%]
+				<input type="hidden" id="captcha_update_url" value="/ajaxCaptcha">
+				<input type="hidden" id="captcha_pic_path" value="[% config('www_static_captchas_path') %]">
+	[% END IF -%]
+
 				<!-- text -->
 				<div class="text">
 
 					<h3><a href="#">[% rart.article.title %]</a></h3>
 
-					<div class="btn-with-loader disp-ib btn-delete-article">
-						<input type="submit" class="btn" id="delete_article_send_btn" value="Delete article">
-						<div class="loader hidden" id="loader_delete_article"></div>
-					</div>
+					<form method="post" action="/ajaxDelArticle" class="ajax" id="delete_article_form">
+						<input type="hidden" name="id_article" value="[% rart.article.id_article %]">
+						<div class="btn-with-loader disp-ib btn-delete-article">
+							<input type="submit" class="btn" value="Delete article">
+							<div class="loader hidden" id="loader_delete_article"></div>
+						</div>
+					</form>
 
-					<p class="author">[% rart.article.author %]<time class="date">([% rart.article.pub_date %])</time></p>
+					<p class="author">[% rart.article.author %] <time class="date">([% rart.article.pub_date %])</time></p>
 					[% rart.article.content %]
-					<input type="hidden" id="main_id_article" value="[% rart.article.id_article %]">
+
 					<p><a href="#" id="leave_comment_for_article">Leave a comment</a></p>
 				</div><!-- text -->
+
 				<!-- comments -->
 				<div class="comments">
 
-					<!-- show comments link -->
-					<div class="show-comments-box">
-						<a href="#" class="show-comments-link">[% mn('$1 comment', rart.comments.size, rart.comments.size) %]</a>
-					</div>
+					<!-- comments number -->
+					<h6 class="comments-number">[% mn('<span id="comments_number">$1</span> comment', rart.comments.size, rart.comments.size) %]</h6>
 
 					<!-- comments list -->
 					<div class="comments">
     [% FOR comment in rart.comments -%]
-						<!-- comment -->
+    					<!-- comment -->
 						<div class="comment" id="comment_[% comment.id_comment %]">
-							<p><time class="date">([% comment.pub_date %])</time>[% comment.author %]</p>
+							<p class="author">[% comment.author %] <time class="date">([% comment.pub_date %])</time></p>
 							<p>[% comment.comment %]</p>
-							<p class="comment-answer-link"><a href="#" class="leave-comment" id="leave_comment_[% comment.id_comment %]">leave a comment</a> | <a href="#" class="delete-comment" id="delete_comment_[% comment.id_comment %]">delete comment</a></p>
-						</div>
-						<!-- comment -->
+							<form method="post" action="/ajaxDelCommentWithTree" class="delete-comment-form ajax">
+								<input type="hidden" name="id_comment" value="[% comment.id_comment %]">
+								<input type="button" class="btn leave-comment" value="leave a comment"> | 
+								<div class="btn-with-loader disp-ib">
+									<input type="submit" class="btn delete-comment" value="delete comment">
+									<div class="loader hidden" id="loader_delete_comment_[% comment.id_comment %]"></div>
+								</div>
+							</form>
+						</div><!-- comment -->
     [% END -%]
 					</div><!-- comments list -->
 
 				</div><!-- comments -->
+
+				<!-- comment template -->
+				<div class="comment-template hidden" id="comment_template_box">
+					<div class="comment" id="comment___id__" style="margin-left: __depth__px;">
+						<p class="author">__author__ <time class="date">(__date__)</time></p>
+						<p>__text__</p>
+						<form method="post" action="/ajaxDelCommentWithTree" class="delete-comment-form ajax">
+							<input type="hidden" name="id_comment" value="__id__">
+							<input type="button" class="btn leave-comment" value="leave a comment"> | 
+							<div class="btn-with-loader disp-ib">
+								<input type="submit" class="btn delete-comment" value="delete comment">
+								<div class="loader hidden" id="loader_delete_comment___id__"></div>
+							</div>
+						</form>
+					</div>
+				</div><!-- comment template -->
+
 				<!-- comment form -->
 				<div class="comment-form hidden" id="comment_form_box">
-					<form method="post" action="/ajaxAddComment" id="comment_form">
-						<input type="hidden" name="author" id="author" value="author">
+					<form method="post" action="/ajaxAddComment" class="validate ajax" id="leave_comment_form">
+						<input type="hidden" name="author" value="[% author.login %]">
 						<input type="hidden" name="id_article" id="id_article">
 						<input type="hidden" name="id_comment_parent" id="id_comment_parent">
 
-						<textarea name="comment" id="comment"></textarea>
-      [% author = "get author info".model -%]
-      [% IF author.result ne 'OK' -%]
+						<textarea name="comment" id="comment" required minlength="4" maxlength="1000"></textarea>
+    [% IF author.result ne 'OK' -%]
         [% captcha="captcha".model() -%]
-						<input type="hidden" name="captcha_hash" id="captcha_hash" value="[% captcha.code %]" >
-						<img src="[% config('www_static_captchas_path') %][% captcha.code %].jpg">
-						<input type="text" class="fld w-100" name="captcha" id="captcha" autocomplete="off">
-      [% END IF -%]
+						<input type="hidden" name="captcha_hash" id="captcha_hash_1">
+						<img src="../images/captcha.png" id="captcha_pic_1">
+						<input type="button" class="captcha-reload-btn" id="captcha_reload_btn_1">
+						<input type="text" class="fld w-100" name="captcha" id="captcha_1" autocomplete="off" required minlength="5" maxlength="7">
+	[% END IF -%]
 						<div class="btn-with-loader disp-ib">
 							<input type="submit" class="btn ml-10" id="add_comment_btn" value="Leave a comment">
 							<div class="loader hidden" id="loader_add_comment"></div>
