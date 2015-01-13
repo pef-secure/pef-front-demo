@@ -32,6 +32,12 @@ msgstr[0] "<span id=\"comments_number\">$1</span> комментарий"
 msgstr[1] "<span id=\"comments_number\">$1</span> комментария"
 msgstr[2] "<span id=\"comments_number\">$1</span> комментариев"
 
+msgid "$1 comment"
+msgid_plural "$1 comments"
+msgstr[0] "комментарий"
+msgstr[1] "комментария"
+msgstr[1] "комментариев"
+
 #: templates/index.html:33
 msgid "Next"
 msgstr "Следующие"
@@ -42,6 +48,24 @@ msgstr "Предыдущие"
 
 msgid "No such article"
 msgstr "Нет такой статьи"
+
+msgid "Add article"
+msgstr "Добавить статью"
+
+msgid "Delete article"
+msgstr "Удалить статью"
+
+msgid "Leave comment"
+msgstr "Оставить комментарий"
+
+msgid "Delete comment"
+msgstr "Удалить комментарий"
+
+msgid "Article"
+msgstr "Статья"
+
+msgid "Main page"
+msgstr "Главная страница"
 
 msgid "Anonymous user must enter CAPTCHA"
 msgstr "Анонимные пользователи должны вводить CAPTCHA"

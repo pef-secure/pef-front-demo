@@ -41,6 +41,7 @@
 				<form method="post" action="/ajaxLogoutAuthor" class="ajax" id="logout_form">
 				<input type="button" class="btn" value="Logout">
 				</form>
+				<a href="/add">[% m('Add article') %]</a>
 			</div><!-- user info -->
 [% END %]
 		</div>

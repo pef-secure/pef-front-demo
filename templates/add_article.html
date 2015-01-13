@@ -1,17 +1,17 @@
 [% WRAPPER main_layout.tt 
-    title = "Add new article"
+    title = [% m('Add article') %]
 %]
 
 		<!-- add article -->
 		<div class="add-article">
 
-			<h3>Add article</h3>
+			<h3>[% m('Add article') %]</h3>
 
 			<form method="post" action="/ajaxAddArticle" class="validate ajax" id="add_article_form">
 				<input type="text" class="fld" name="title" id="title" placeholder="Title" required minlength="5" maxlength="100">
 				<textarea name="content" id="content" placeholder="Text" required minlength="5" maxlength="4000"></textarea>
 				<div class="btn-with-loader">
-					<input type="submit" class="btn w-100p" id="add_article_send_btn" value="Add article">
+					<input type="submit" class="btn w-100p" id="add_article_send_btn" value="[% m('Add article') %]">
 					<div class="loader hidden" id="loader_add_article"></div>
 				</div>
 			</form>

@@ -30,6 +30,11 @@ msgid_plural "<span id=\"comments_number\">$1</span> comments"
 msgstr[0] ""
 msgstr[1] ""
 
+msgid "$1 comment"
+msgid_plural "$1 comments"
+msgstr[0] ""
+msgstr[1] ""
+
 #: templates/index.html:33
 msgid "Next"
 msgstr ""
@@ -39,6 +44,24 @@ msgid "Previous"
 msgstr ""
 
 msgid "No such article"
+msgstr ""
+
+msgid "Add article"
+msgstr ""
+
+msgid "Delete article"
+msgstr ""
+
+msgid "Leave comment"
+msgstr ""
+
+msgid "Delete comment"
+msgstr ""
+
+msgid "Article"
+msgstr ""
+
+msgid "Main page"
 msgstr ""
 
 msgid "Anonymous user must enter CAPTCHA"
