@@ -2,7 +2,7 @@
 params:
   ip: $ip
   id_comment: $positive_integer
-  auth: $auth
+  auth: $auth_required
 model: Article::delete_comment_with_tree
 expected:
   - result: OK

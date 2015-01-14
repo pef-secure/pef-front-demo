@@ -16,6 +16,9 @@ params:
   auth:
     default: cookies.auth
     max-size: 40
+  auth_required:
+    base: auth
+    filter: Auth::required
   limit:
     regex: ^\d+$        
     max-size: 3

@@ -1,7 +1,7 @@
 ---
 params:
   ip: $ip
-  auth: $auth
+  auth: $auth_required
   title:
     max-size: 100
     min-size: 1

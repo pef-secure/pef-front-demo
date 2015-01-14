@@ -1,7 +1,7 @@
 ---
 params:
   ip: $ip
-  auth: $auth
+  auth: $auth_required
   id_article: $positive_integer
   title:
     max-size: 100

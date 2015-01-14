@@ -111,22 +111,12 @@ sub add_comment {
 
 sub delete_article_with_comments {
 	my ($req, $defaults) = @_;
-	return {
-		result => "NEED_LOGIN",
-		answer => 'You have to login for this operation'
-	  }
-	  unless get_author_from_auth($req->{auth});
 	DBC::Article->delete({hash_ref_slice $req, 'id_article'});
 	return {result => "OK"};
 }
 
 sub delete_comment_with_tree {
 	my ($req, $defaults) = @_;
-	return {
-		result => "NEED_LOGIN",
-		answer => 'You have to login for this operation'
-	  }
-	  unless get_author_from_auth($req->{auth});
 	my $comment = one_row(comment => $req->{id_comment});
 	return {
 		result => "NO_COMMENT",
@@ -145,11 +135,6 @@ sub delete_comment_with_tree {
 sub add_article {
 	my ($req, $defaults) = @_;
 	my $author = get_author_from_auth($req->{auth});
-	return {
-		result => "NEED_LOGIN",
-		answer => 'You have to login for this operation'
-	  }
-	  unless $author;
 	$req->{id_author} = $author->id_author;
 	return {
 		result     => "OK",
@@ -162,11 +147,6 @@ sub add_article {
 
 sub edit_article {
 	my ($req, $defaults) = @_;
-	return {
-		result => "NEED_LOGIN",
-		answer => 'You have to login for this operation'
-	  }
-	  unless get_author_from_auth($req->{auth});
 	my $article = one_row(article => $req->{id_article});
 	return {
 		result => "NO_ARTICLE",
