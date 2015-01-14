@@ -38,6 +38,42 @@ article.commentTemplate = $( '#comment_template_box' ).html();
 
 
 
+// add delete comment ajax handler
+article.addDeleteCommentAjaxHandler = function ( selector ) {
+	zForm.addAjaxHandler ({
+
+		// form selector
+		_selector: selector, // optional
+
+		// action before sending a response
+		_before: function () { // optional
+			article.hideCommentForm();
+			var commentId = article.getCommentId();
+			loader.show ( 'delete_comment_' + commentId );
+		},
+
+		// action after receiving a response
+		_preResponse: function () { // optional
+			var commentId = article.getCommentId();
+			loader.hide ( 'delete_comment_' + commentId );
+		},
+
+		// results
+		ok: function () {
+			var commentId = article.getCommentPathId();
+			var commentBox = $( '#' + commentId );
+			commentId += '_';
+			article.commentsBox.find ( 'div.comment' ).each ( function () {
+				if ( $(this).attr ( 'id' ).search ( commentId ) != -1 ) {
+					$(this).remove();
+				}
+			});
+			commentBox.remove();
+			article.updateCommentsNumber();
+		}
+	});
+};
+
 // get comment id
 article.getCommentId = function () {
 	return zForm.currentAjaxForm.find ( 'input[name="id_comment"]' ).val();
@@ -79,6 +115,7 @@ article.hideCommentForm = function ( commentFor, id ) {
 // build comment
 article.buildComment = function () {
 	var commentId = zForm.currentAjaxResponse.id_comment;
+	var commentPath = zForm.currentAjaxResponse.path.join ( '_' );
 	var currentDate = new Date();
 	currentDate = article.addZero ( currentDate.getDate() ) + '-' + 
 				  article.addZero ( currentDate.getMonth() + 1 ) + '-' + 
@@ -89,6 +126,7 @@ article.buildComment = function () {
 	
 	var commentHtml = article.commentTemplate;
 	commentHtml = commentHtml.replace ( /__id__/g, commentId );
+	commentHtml = commentHtml.replace ( /__path__/g, commentPath );
 	commentHtml = commentHtml.replace ( /__author__/, article.userName );
 	commentHtml = commentHtml.replace ( /__date__/, currentDate );
 	commentHtml = commentHtml.replace ( /__text__/, article.commentForm.comment.val() );
@@ -102,6 +140,8 @@ article.buildComment = function () {
 		commentHtml = commentHtml.replace ( /__depth__/, '0' );
 		article.commentsBox.append ( commentHtml );
 	}
+
+	article.addDeleteCommentAjaxHandler ( '#comment_' + commentId + ' form.delete-comment-form' );
 };
 
 // update comments number
@@ -187,38 +227,7 @@ article.init = function () {
 	});
 
 	// add ajax handler: delete comment
-	zForm.addAjaxHandler ({
-
-		// form selector
-		_selector: 'form.delete-comment-form', // optional
-
-		// action before sending a response
-		_before: function () { // optional
-			article.hideCommentForm();
-			var commentId = article.getCommentId();
-			loader.show ( 'delete_comment_' + commentId );
-		},
-
-		// action after receiving a response
-		_preResponse: function () { // optional
-			var commentId = article.getCommentId();
-			loader.hide ( 'delete_comment_' + commentId );
-		},
-
-		// results
-		ok: function () {
-			var commentId = article.getCommentPathId();
-			var commentBox = $( '#' + commentId );
-			commentId += '_';
-			article.commentsBox.find ( 'div.comment' ).each ( function () {
-				if ( $(this).attr ( 'id' ).search ( commentId ) != -1 ) {
-					$(this).remove();
-				}
-			});
-			commentBox.remove();
-			article.updateCommentsNumber();
-		}
-	});
+	article.addDeleteCommentAjaxHandler ( 'form.delete-comment-form' );
 
 };
 
