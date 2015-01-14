@@ -10,7 +10,7 @@ model: Author::logout
 result:
   DEFAULT:
     redirect:
-      - TT request.param('back_url')
+      - TT request.back_url
       - /
     unset-cookie: auth
 expected:
