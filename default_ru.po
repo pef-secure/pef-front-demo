@@ -61,6 +61,12 @@ msgstr "Оставить комментарий"
 msgid "Delete comment"
 msgstr "Удалить комментарий"
 
+msgid "English"
+msgstr "Английский"
+
+msgid "Russian"
+msgstr "Русский"
+
 msgid "Article"
 msgstr "Статья"
 

@@ -58,6 +58,12 @@ msgstr ""
 msgid "Delete comment"
 msgstr ""
 
+msgid "English"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
 msgid "Article"
 msgstr ""
 
