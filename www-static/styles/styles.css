@@ -13,7 +13,7 @@ a, a:active, a:focus { outline: none; border: none; }
 a:hover { text-decoration: none; }
 
 h1, h2, h3, h4, h5, h6 { line-height: 1.3; font-weight: 600; }
-h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { text-decoration: none; color: #40b51a; }
+h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: #40b51a; }
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { text-decoration: underline; }
 h1 { margin-bottom: 30px; font-size: 30px; }
 h2 { margin-bottom: 30px; font-size: 28px; }
@@ -168,6 +168,7 @@ label { display: block; margin-bottom: 2px; }
 .comment .leave-comment, .comment .delete-comment { height: 22px; padding: 0; margin: 0 5px; border: none; border-radius: 0; background: none; text-decoration: underline; line-height: 1.5; font-size: 12px; color: #40a51a; }
 .comment .leave-comment { margin-left: 0; }
 .comment .leave-comment:hover, .comment .delete-comment:hover { text-decoration: none; }
+.comments-number-small { margin-top: 20px; font-size: 14px; font-weight: normal; }
 
 /* comment form */
 .comment-form { padding-top: 10px; }

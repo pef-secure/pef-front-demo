@@ -28,7 +28,7 @@
 				<!-- text -->
 				<div class="text">
 
-					<h3[% IF author.result eq 'OK' %] class="mr-200"[% END IF %]><a href="#">[% rart.article.title %]</a></h3>
+					<h3[% IF author.result eq 'OK' %] class="mr-200"[% END IF %]>[% rart.article.title %]</h3>
 	[% IF author.result eq 'OK' -%]
 					<form method="post" action="/ajaxDelArticle" class="ajax" id="delete_article_form">
 						<input type="hidden" name="id_article" value="[% rart.article.id_article %]">
@@ -93,11 +93,11 @@
 						<input type="hidden" name="id_article" id="id_article" value="[% rart.article.id_article %]">
 						<input type="hidden" name="id_comment_parent" id="id_comment_parent">
     [% IF author.result ne 'OK' -%]
-    					<input type="text" class="fld" name="author" id="author" required minlength="1" maxlength="40" placehoder="m('Your name')">
+    					<input type="text" class="fld" name="author" id="author" required minlength="1" maxlength="40" placehoder="[% m('Your name') %]">
 	[% ELSE -%]
 						<input type="hidden" name="author" value="[% author.login %]">
 	[% END IF -%]
-						<textarea name="comment" id="comment" required minlength="4" maxlength="1000" placehoder="m('Comment')"></textarea>
+						<textarea name="comment" id="comment" required minlength="4" maxlength="1000" placehoder="[% m('Comment') %]"></textarea>
     [% IF author.result ne 'OK' -%]
         [% captcha="captcha".model() -%]
         				<input type="hidden" name="captcha_hash" id="captcha_hash_1" value="[% captcha.code %]">

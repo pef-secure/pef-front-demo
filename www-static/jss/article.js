@@ -89,30 +89,27 @@ article.getCommentPathId = function () {
 
 // show comment form
 article.showCommentForm = function ( commentFor, id, insertAfterElem ) {
-	if ( article.isUserLogged ) {
+	if ( ! article.isUserLogged ) {
 		article.commentForm.author.val ( '' );
-	} else {
 		captcha.reload ( 'captcha_reload_btn_1', false );
 	}
 	article.commentForm.comment.val ( '' );
 	article.commentForm.captcha.val ( '' );
 
 	if ( commentFor == 'comment' ) {
-		//article.commentForm.idArticle.val ( '' );
 		article.commentForm.idCommentParent.val ( id );
 		article.commentFormBox.insertAfter ( insertAfterElem );
 	}
 	if ( commentFor == 'article' ) {
 		article.commentForm.idCommentParent.val ( '' );
-		//article.commentForm.idArticle.val ( id );
 		article.commentFormBox.insertBefore ( article.commentsBox );
 	}
 
 	article.commentFormBox.removeClass ( 'hidden' );
 	if ( article.isUserLogged ) {
-		article.commentForm.author.focus();
-	} else {
 		article.commentForm.comment.focus();
+	} else {
+		article.commentForm.author.focus();
 	}
 };
 
