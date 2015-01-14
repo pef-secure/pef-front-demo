@@ -23,7 +23,7 @@ create table article (
 create table comment (
     id_comment         serial    primary key,
     id_comment_parent  integer,
-    id_article         integer   not null references article(id_article),
+    id_article         integer   not null references article(id_article) on delete cascade,
     pub_date           timestamp not null default now(),
     comment            text      not null,
     author             text      not null
