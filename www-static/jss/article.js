@@ -88,7 +88,7 @@ article.buildComment = function () {
 	commentHtml = commentHtml.replace ( /__date__/, currentDate );
 	commentHtml = commentHtml.replace ( /__text__/, article.commentForm.comment.val() );
 
-	if ( article.commentForm.idArticle.val() == '' ) {
+	if ( article.commentForm.idCommentParent.val() != '' ) {
 		var insertAfterComment = $( '#comment_' + article.commentForm.idCommentParent.val() );
 		var insertAfterCommentDepth = parseInt ( insertAfterComment.css ( 'margin-left' ), 10 ) + article.depthMargin;
 		commentHtml = commentHtml.replace ( /__depth__/, insertAfterCommentDepth );

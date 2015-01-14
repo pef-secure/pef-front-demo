@@ -43,7 +43,7 @@
 			</div><!-- login -->
 [% ELSE %]
 			<div class="user-info">
-				<strong id="user_name">[% m('Hello $1', author.name) %]</strong>
+				<strong>[% m('Hello <span id="user_name">$1</span>', author.name) %]</strong>
 				<a href="/add" class="btn">[% m('Add article') %]</a>
 				<form method="post" action="/logoutAuthor">
 					<input type="submit" class="btn" value="Logout">
