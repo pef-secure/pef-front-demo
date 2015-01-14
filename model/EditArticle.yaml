@@ -1,0 +1,19 @@
+---
+params:
+  ip: $ip
+  auth: $auth
+  id_article: $positive_integer
+  title:
+    max-size: 100
+    min-size: 1
+    filter: [ s/</&lt;/g, s/>/&gt;/g ]
+  content:
+    min-size: 2
+    max-size: 4000
+model: Article::edit_article
+expected:
+  - result: OK
+    id_article:
+  - result: NEED_LOGIN
+    answer:
+  - result: $DEFAULT
