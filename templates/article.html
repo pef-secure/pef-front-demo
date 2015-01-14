@@ -59,11 +59,14 @@
 							<p>[% comment.comment %]</p>
 							<form method="post" action="/ajaxDelCommentWithTree" class="delete-comment-form ajax">
 								<input type="hidden" name="id_comment" value="[% comment.id_comment %]">
-								<input type="button" class="btn leave-comment" value="[% m('Answer') %]"> | 
+								<input type="button" class="btn leave-comment" value="[% m('Answer') %]">
+		[% IF author.result eq 'OK' -%]
+								&nbsp;|&nbsp;
 								<div class="btn-with-loader disp-ib">
 									<input type="submit" class="btn delete-comment" value="[% m('Delete comment') %]">
 									<div class="loader hidden" id="loader_delete_comment_[% comment.id_comment %]"></div>
 								</div>
+		[% END IF -%]
 							</form>
 						</div><!-- comment -->
     [% END -%]
@@ -78,11 +81,14 @@
 						<p>__text__</p>
 						<form method="post" action="/ajaxDelCommentWithTree" class="delete-comment-form ajax">
 							<input type="hidden" name="id_comment" value="__id__">
-							<input type="button" class="btn leave-comment" value="[% m('Answer') %]"> | 
+							<input type="button" class="btn leave-comment" value="[% m('Answer') %]">
+	[% IF author.result eq 'OK' -%]
+							&nbsp;|&nbsp;
 							<div class="btn-with-loader disp-ib">
 								<input type="submit" class="btn delete-comment" value="[% m('Delete comment') %]">
 								<div class="loader hidden" id="loader_delete_comment___id__"></div>
 							</div>
+	[% END IF -%]
 						</form>
 					</div>
 				</div><!-- comment template -->

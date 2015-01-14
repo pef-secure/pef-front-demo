@@ -153,7 +153,9 @@ article.buildComment = function () {
 		article.commentsBox.append ( commentHtml );
 	}
 
-	article.addDeleteCommentAjaxHandler ( '#comment_' + commentPath + ' form.delete-comment-form' );
+	if ( article.isUserLogged ) {
+		article.addDeleteCommentAjaxHandler ( '#comment_' + commentPath + ' form.delete-comment-form' );
+	}
 };
 
 // update comments number
@@ -242,7 +244,9 @@ article.init = function () {
 	});
 
 	// add ajax handler: delete comment
-	article.addDeleteCommentAjaxHandler ( 'form.delete-comment-form' );
+	if ( article.isUserLogged ) {
+		article.addDeleteCommentAjaxHandler ( 'form.delete-comment-form' );
+	}
 
 };
 

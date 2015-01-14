@@ -11,7 +11,12 @@ captcha.picPath = '';
 
 
 // reload
-captcha.reload = function ( captchaId, needFocus ) {
+captcha.reload = function ( captchaId, opt_needFocus ) {
+	var needFocus = true;
+	if ( arguments.length == 2 ) {
+		needFocus = opt_needFocus;
+	}
+
 	$.ajax({
 		url: captcha.reloadUrl,
 		dataType: 'json',

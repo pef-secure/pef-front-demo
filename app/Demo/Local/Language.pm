@@ -1,6 +1,6 @@
 package Demo::Local::Language;
 use PEF::Front::Config;
-use DBIx::Struct qw(hash_ref_slice);
+use DBIx::Struct;
 
 sub get_langs {
 	my ($req, $defaults) = @_;
