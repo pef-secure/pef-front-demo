@@ -76,17 +76,38 @@ sub add_comment {
 		answer => "Anonymous user must enter CAPTCHA"
 	  }
 	  if not $author and $req->{captcha_code} eq 'nocheck';
+	my $new_comment = new_row(
+		comment => hash_ref_slice $req,
+		qw(id_article id_comment_parent comment author)
+	);
 	my $comment_count =
 	  one_row([comment => -columns => 'count(*)'], {hash_ref_slice $req, 'id_article'})->count;
+	my $path = connector->run(
+		sub {
+			$_->selectrow_hashref(
+				q{
+					with recursive comment_path(path) as (
+						select array[id_comment] path, id_comment_parent, id_comment 
+						from comment
+						where id_comment = ?
+						union all 
+						select array[c.id_comment] || path, c.id_comment_parent, c.id_comment 
+						from comment c, comment_path cp 
+						where cp.id_comment_parent = c.id_comment
+					) 
+					select * 
+					from comment_path 
+					where id_comment_parent is null
+				}, undef, $new_comment->id_comment
+			);
+		}
+	);
 	return {
 		result     => "OK",
-		id_comment => new_row(
-			comment => hash_ref_slice $req,
-			qw(id_article id_comment_parent comment author)
-		  )->id_comment,
-		comments_number => msg_get_n(
-			$defaults->{lang}, '$1 comments', $comment_count, $comment_count
-		)->{message}
+		id_comment => $new_comment->id_comment,
+		path       => $path->{path},
+		comments_number =>
+		  msg_get_n($defaults->{lang}, '$1 comments', $comment_count, $comment_count)->{message}
 	};
 }
 
@@ -119,9 +140,7 @@ sub delete_comment_with_tree {
 	  one_row([comment => -columns => 'count(*)'], {id_article => $comment->id_article})->count;
 	return {
 		result          => "OK",
-		comments_number => msg_get_n(
-			$defaults->{lang}, '$1 comments', $comment_count, $comment_count
-		)->{message}
+		comments_number => msg_get_n($defaults->{lang}, '$1 comments', $comment_count, $comment_count)->{message}
 	};
 }
 
