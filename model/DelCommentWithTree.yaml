@@ -6,6 +6,9 @@ params:
 model: Article::delete_comment_with_tree
 expected:
   - result: OK
+    comments_number:
   - result: NEED_LOGIN
+    answer:
+  - result: NO_COMMENT
     answer:
   - result: $DEFAULT

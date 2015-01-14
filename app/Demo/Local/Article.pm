@@ -1,6 +1,7 @@
 package Demo::Local::Article;
 use DBIx::Struct qw(connector hash_ref_slice);
 use Demo::Common;
+use PEF::Front::NLS;
 
 sub get_articles {
 	my ($req, $defaults) = @_;
@@ -75,12 +76,17 @@ sub add_comment {
 		answer => "Anonymous user must enter CAPTCHA"
 	  }
 	  if not $author and $req->{captcha_code} eq 'nocheck';
+	my $comment_count =
+	  one_row([comment => -columns => 'count(*)'], {hash_ref_slice $req, 'id_article'})->count;
 	return {
 		result     => "OK",
 		id_comment => new_row(
 			comment => hash_ref_slice $req,
 			qw(id_article id_comment_parent comment author)
-		)->id_comment
+		  )->id_comment,
+		comments_number => msg_get_n(
+			$defaults->{lang}, '<span id="comments_number">$1</span> comment', $comment_count, $comment_count
+		)->{message}
 	};
 }
 
@@ -102,8 +108,21 @@ sub delete_comment_with_tree {
 		answer => 'You have to login for this operation'
 	  }
 	  unless get_author_from_auth($req->{auth});
+	my $comment = one_row(comment => $req->{id_comment});
+	return {
+		result => "NO_COMMENT",
+		answer => 'No such comment'
+	  }
+	  unless $comment;
 	DBC::Comment->delete({hash_ref_slice $req, 'id_comment'});
-	return {result => "OK"};
+	my $comment_count =
+	  one_row([comment => -columns => 'count(*)'], {id_article => $comment->id_article})->count;
+	return {
+		result          => "OK",
+		comments_number => msg_get_n(
+			$defaults->{lang}, '<span id="comments_number">$1</span> comment', $comment_count, $comment_count
+		)->{message}
+	};
 }
 
 sub add_article {
