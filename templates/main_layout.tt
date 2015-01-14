@@ -98,6 +98,7 @@
 	msg.field.password = 'Password';
 	msg.field.title = 'Title';
 	msg.field.content = 'Content';
+	msg.field.author = 'Name';
 	msg.field.comment = 'Comment';
 	msg.field.captcha = 'Captcha';
 

@@ -54,7 +54,7 @@
 					<div id="comments">
     [% FOR comment in rart.comments -%]
     					<!-- comment -->
-						<div class="comment" id="comment_[% comment.path.join('_') %]" style="margin-left: [% comment.depth * 20 %]px;">
+						<div class="comment" id="comment_[% comment.path.join('_') %]" style="margin-left: [% (comment.depth - 1) * 20 %]px;">
 							<p class="author">[% comment.author %] <time class="date">([% comment.pub_date %])</time></p>
 							<p>[% comment.comment %]</p>
 							<form method="post" action="/ajaxDelCommentWithTree" class="delete-comment-form ajax">
@@ -90,15 +90,18 @@
 				<!-- comment form -->
 				<div class="comment-form hidden" id="comment_form_box">
 					<form method="post" action="/ajaxAddComment" class="validate ajax" id="leave_comment_form">
-						<input type="hidden" name="author" value="[% author.login %]">
 						<input type="hidden" name="id_article" id="id_article" value="[% rart.article.id_article %]">
 						<input type="hidden" name="id_comment_parent" id="id_comment_parent">
-
+    [% IF author.result ne 'OK' -%]
+    					<input type="text" class="fld" name="author" id="author" required minlength="1" maxlength="40">
+	[% ELSE -%]
+						<input type="hidden" name="author" value="[% author.login %]">
+	[% END IF -%]
 						<textarea name="comment" id="comment" required minlength="4" maxlength="1000"></textarea>
     [% IF author.result ne 'OK' -%]
         [% captcha="captcha".model() -%]
         				<input type="hidden" name="captcha_hash" id="captcha_hash_1" value="[% captcha.code %]">
-						<img src="[% config('www_static_captchas_path') %][% captcha.code %].jpg" id="captcha_pic_1">
+						<img src="[% config('www_static_captchas_path') %][% captcha.code %].jpg" class="captcha-pic" id="captcha_pic_1">
 						<input type="button" class="captcha-reload-btn" id="captcha_reload_btn_1">
 						<input type="text" class="fld w-100 mr-10" name="captcha" id="captcha_1" autocomplete="off" required minlength="5" maxlength="7">
 	[% ELSE -%]
@@ -121,4 +124,3 @@
   [% END %]
 [% END %]
 [% END %]
-

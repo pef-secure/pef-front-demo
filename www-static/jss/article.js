@@ -27,7 +27,7 @@ article.commentsBox = $( '#comments' );
 article.commentFormBox = $( '#comment_form_box' );
 article.commentForm = {};
 article.commentForm.form = $( '#leave_comment_form' );
-//article.commentForm.author = $( '#author' );
+article.commentForm.author = $( '#author' );
 article.commentForm.idArticle = $( '#id_article' );
 article.commentForm.idCommentParent = $( '#id_comment_parent' );
 article.commentForm.captchaHash = $( '#captcha_hash_1' );
@@ -35,6 +35,8 @@ article.commentForm.comment = $( '#comment' );
 article.commentForm.captcha = $( '#captcha_1' );
 
 article.commentTemplate = $( '#comment_template_box' ).html();
+
+article.isUserLogged = ( article.commentForm.author.length > 0 );
 
 
 
@@ -87,6 +89,9 @@ article.getCommentPathId = function () {
 
 // show comment form
 article.showCommentForm = function ( commentFor, id, insertAfterElem ) {
+	if ( article.isUserLogged ) {
+		article.commentForm.author.val ( '' );
+	}
 	article.commentForm.comment.val ( '' );
 	article.commentForm.captcha.val ( '' );
 
@@ -102,7 +107,11 @@ article.showCommentForm = function ( commentFor, id, insertAfterElem ) {
 	}
 
 	article.commentFormBox.removeClass ( 'hidden' );
-	article.commentForm.comment.focus();
+	if ( article.isUserLogged ) {
+		article.commentForm.author.focus();
+	} else {
+		article.commentForm.comment.focus();
+	}
 };
 
 // hide comment form
@@ -143,7 +152,7 @@ article.buildComment = function () {
 		article.commentsBox.append ( commentHtml );
 	}
 
-	article.addDeleteCommentAjaxHandler ( '#comment_' + commentId + ' form.delete-comment-form' );
+	article.addDeleteCommentAjaxHandler ( '#comment_' + commentPath + ' form.delete-comment-form' );
 };
 
 // update comments number
