@@ -41,7 +41,7 @@
 					<p class="author">[% rart.article.author %] <time class="date">([% rart.article.pub_date %])</time></p>
 					[% rart.article.content %]
 
-					<p class="mt-20"><a href="#" id="leave_comment_for_article">[% m('Leave a comment') %]</a></p>
+					<p class="mt-20"><a href="#" id="leave_comment_for_article">[% m('Leave comment') %]</a></p>
 				</div><!-- text -->
 
 				<!-- comments -->
@@ -59,7 +59,7 @@
 							<p>[% comment.comment %]</p>
 							<form method="post" action="/ajaxDelCommentWithTree" class="delete-comment-form ajax">
 								<input type="hidden" name="id_comment" value="[% comment.id_comment %]">
-								<input type="button" class="btn leave-comment" value="[% m('Leave a comment') %]"> | 
+								<input type="button" class="btn leave-comment" value="[% m('Leave comment') %]"> | 
 								<div class="btn-with-loader disp-ib">
 									<input type="submit" class="btn delete-comment" value="[% m('Delete comment') %]">
 									<div class="loader hidden" id="loader_delete_comment_[% comment.id_comment %]"></div>
@@ -78,7 +78,7 @@
 						<p>__text__</p>
 						<form method="post" action="/ajaxDelCommentWithTree" class="delete-comment-form ajax">
 							<input type="hidden" name="id_comment" value="__id__">
-							<input type="button" class="btn leave-comment" value="[% m('Leave a comment') %]"> | 
+							<input type="button" class="btn leave-comment" value="[% m('Leave comment') %]"> | 
 							<div class="btn-with-loader disp-ib">
 								<input type="submit" class="btn delete-comment" value="[% m('Delete comment') %]">
 								<div class="loader hidden" id="loader_delete_comment___id__"></div>
@@ -106,7 +106,7 @@
 						<input type="hidden" name="captcha" value="nocheck">
 	[% END IF -%]
 						<div class="btn-with-loader disp-ib">
-							<input type="submit" class="btn" id="add_comment_btn" value="[% m('Leave a comment') %]">
+							<input type="submit" class="btn" id="add_comment_btn" value="[% m('Leave comment') %]">
 							<div class="loader hidden" id="loader_add_comment"></div>
 						</div>
 					</form>
