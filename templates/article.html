@@ -91,7 +91,7 @@
 				<div class="comment-form hidden" id="comment_form_box">
 					<form method="post" action="/ajaxAddComment" class="validate ajax" id="leave_comment_form">
 						<input type="hidden" name="author" value="[% author.login %]">
-						<input type="hidden" name="id_article" id="id_article">
+						<input type="hidden" name="id_article" id="id_article" value="[% rart.article.id_article %]">
 						<input type="hidden" name="id_comment_parent" id="id_comment_parent">
 
 						<textarea name="comment" id="comment" required minlength="4" maxlength="1000"></textarea>
