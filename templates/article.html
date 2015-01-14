@@ -33,7 +33,7 @@
 					<form method="post" action="/ajaxDelArticle" class="ajax" id="delete_article_form">
 						<input type="hidden" name="id_article" value="[% rart.article.id_article %]">
 						<div class="btn-with-loader disp-ib btn-delete-article">
-							<input type="submit" class="btn" value="Delete article">
+							<input type="submit" class="btn" value="[% m('Delete article') %]">
 							<div class="loader hidden" id="loader_delete_article"></div>
 						</div>
 					</form>
