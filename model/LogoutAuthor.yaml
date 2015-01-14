@@ -4,12 +4,14 @@ params:
   auth: 
     base: $auth
     optional: true
+  back_url:
+    default: headers.referer
 model: Author::logout
 result:
   DEFAULT:
     redirect:
-        - TT defaults.headers('referer') 
-        - /
+      - TT request.param('back_url')
+      - /
     unset-cookie: auth
 expected:
   - result: OK
