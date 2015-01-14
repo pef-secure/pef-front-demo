@@ -116,6 +116,8 @@ article.hideCommentForm = function ( commentFor, id ) {
 article.buildComment = function () {
 	var commentId = zForm.currentAjaxResponse.id_comment;
 	var commentPath = zForm.currentAjaxResponse.path.join ( '_' );
+	var parentCommentPath = commentPath.replace ( '_' + commentId, '' );
+	
 	var currentDate = new Date();
 	currentDate = article.addZero ( currentDate.getDate() ) + '-' + 
 				  article.addZero ( currentDate.getMonth() + 1 ) + '-' + 
@@ -132,7 +134,7 @@ article.buildComment = function () {
 	commentHtml = commentHtml.replace ( /__text__/, article.commentForm.comment.val() );
 
 	if ( article.commentForm.idCommentParent.val() != '' ) {
-		var insertAfterComment = $( '#comment_' + article.commentForm.idCommentParent.val() );
+		var insertAfterComment = $( '#comment_' + parentCommentPath );
 		var insertAfterCommentDepth = parseInt ( insertAfterComment.css ( 'margin-left' ), 10 ) + article.depthMargin;
 		commentHtml = commentHtml.replace ( /__depth__/, insertAfterCommentDepth );
 		insertAfterComment.after ( commentHtml );
