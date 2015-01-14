@@ -22,8 +22,8 @@ msgid "This is a PEF::Front Demo Blog"
 msgstr "PEF::Front демо-блог"
 
 #: templates/main_layout.tt:34
-msgid "Hello $1"
-msgstr "Привет, $1!"
+msgid "Hello <span id="user_name">$1</span>"
+msgstr "Привет, <span id="user_name">$1</span>!"
 
 #: templates/index.html:22 templates/article.html:51
 msgid "<span id=\"comments_number\">$1</span> comment"
@@ -63,6 +63,18 @@ msgstr "Удалить комментарий"
 
 msgid "Article"
 msgstr "Статья"
+
+msgid "Username"
+msgstr "Имя пользователя"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Login"
+msgstr "Войти"
+
+msgid "Logout"
+msgstr "Выйти"
 
 msgid "Main page"
 msgstr "Главная страница"

@@ -33,10 +33,10 @@
 			<!-- login -->
 			<div class="login">
 				<form method="post" action="/ajaxLoginAuthor" class="validate ajax" id="login_form">
-					<input type="text" class="fld w-100" name="login" id="login" placeholder="Login" required minlength="3" maxlength="40">
-					<input type="password" class="fld w-100" name="password" id="password" placeholder="Password" required minlength="4" maxlength="40">
+					<input type="text" class="fld w-100" name="login" id="login" placeholder="[% m('Username') %]" required minlength="3" maxlength="40">
+					<input type="password" class="fld w-100" name="password" id="password" placeholder="[% m('Password') %]" required minlength="4" maxlength="40">
 					<div class="btn-with-loader disp-ib">
-						<input type="submit" class="btn w-100p" id="login_send_btn" value="Login">
+						<input type="submit" class="btn w-100p" id="login_send_btn" value="[% m('Login') %]">
 						<div class="loader loader-grn hidden" id="loader_login"></div>
 					</div>
 				</form>
@@ -45,8 +45,8 @@
 			<div class="user-info">
 				<strong>[% m('Hello <span id="user_name">$1</span>', author.name) %]</strong>
 				<a href="/add" class="btn">[% m('Add article') %]</a>
-				<form method="post" action="/logoutAuthor">
-					<input type="submit" class="btn" value="Logout">
+				<form method="post" action="/submitLogoutAuthor">
+					<input type="submit" class="btn" value="[% m('Logout') %]">
 				</form>
 			</div><!-- user info -->
 [% END %]
