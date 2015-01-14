@@ -74,6 +74,7 @@ label { display: block; margin-bottom: 2px; }
 .mb-0 { margin-bottom: 0; }
 .mt-20 { margin-top: 20px; }
 .ml-10 { margin-left: 10px; }
+.mr-10 { margin-right: 10px; }
 
 /* display */
 .disp-ib { display: inline-block; }

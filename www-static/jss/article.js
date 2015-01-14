@@ -43,6 +43,11 @@ article.getCommentId = function () {
 	return zForm.currentAjaxForm.find ( 'input[name="id_comment"]' ).val();
 };
 
+// get comment path id
+article.getCommentPathId = function () {
+	return zForm.currentAjaxForm.closest ( 'div.comment' ).attr ( 'id' );
+};
+
 
 // show comment form
 article.showCommentForm = function ( commentFor, id, insertAfterElem ) {
@@ -100,8 +105,8 @@ article.buildComment = function () {
 };
 
 // update comments number
-article.updateCommentsNumber = function () {
-	article.commentsNumber.html ( article.commentsBox.find ( 'div.comment' ).length );
+article.updateCommentsNumber = function ( msg ) {
+	article.commentsNumber.html ( response.comments_number );
 };
 
 // add zero
@@ -151,6 +156,7 @@ article.init = function () {
 		ok: function () {
 			article.buildComment();
 			article.hideCommentForm();
+			article.updateCommentsNumber ( zForm.currentAjaxResponse.comments_number );
 		}
 	});
 
@@ -201,19 +207,16 @@ article.init = function () {
 
 		// results
 		ok: function () {
-			var commentId = article.getCommentId();
-			var commentBox = $( '#comment_' + commentId );
-			var commentDepth = parseInt ( commentBox.css ( 'margin-left' ) );
-			commentBox.nextAll ( 'div.comment' ).each ( function () {
-				var nextCommentDepth = parseInt ( $(this).css ( 'margin-left' ) );
-				if ( nextCommentDepth > commentDepth ) {
+			var commentId = article.getCommentPathId();
+			var commentBox = $( '#' + commentId );
+			commentId += '_';
+			article.commentsBox.find ( 'div.comment' ).each ( function () {
+				if ( $(this).attr ( 'id' ).search ( commentId ) != -1 ) {
 					$(this).remove();
-				} else {
-					return false;
 				}
 			});
 			commentBox.remove();
-			article.updateCommentsNumber();
+			article.updateCommentsNumber ( zForm.currentAjaxResponse.comments_number );
 		}
 	});
 

@@ -85,7 +85,7 @@ sub add_comment {
 			qw(id_article id_comment_parent comment author)
 		  )->id_comment,
 		comments_number => msg_get_n(
-			$defaults->{lang}, '<span id="comments_number">$1</span> comment', $comment_count, $comment_count
+			$defaults->{lang}, '$1 comments', $comment_count, $comment_count
 		)->{message}
 	};
 }
@@ -120,7 +120,7 @@ sub delete_comment_with_tree {
 	return {
 		result          => "OK",
 		comments_number => msg_get_n(
-			$defaults->{lang}, '<span id="comments_number">$1</span> comment', $comment_count, $comment_count
+			$defaults->{lang}, '$1 comments', $comment_count, $comment_count
 		)->{message}
 	};
 }
