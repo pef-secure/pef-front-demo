@@ -39,7 +39,7 @@ hr { height: 0; border-bottom: 1px solid #ddd; }
 
 .hidden { display: none; }
 .invisible { visibility: hidden; }
-.transparent { opacity: 0.3; }
+.transparent { opacity: 0.4; }
 
 
 
@@ -52,6 +52,9 @@ input:focus, select:focus, textarea:focus { border-color: #1aad08; outline: none
 /* buttons */
 .btn { width: auto; border-color: #1fad0e; background-color: #28bd16; cursor: pointer; font-weight: normal; color: #fff; }
 .btn:hover { border-color: #189e08; background-color: #1aad08; }
+
+/* small btn */
+.btn-small { height: 18px; padding: 0 5px; line-height: 14px; font-size: 11px; }
 
 /* captcha reload btn */
 .captcha-reload-btn { display: inline-block; width: 20px; height: 20px; margin: 7px 5px 0; border: none; vertical-align: top; background: url("../images/reload_icon.png") no-repeat 0 0; cursor: pointer; }
@@ -69,6 +72,7 @@ label { display: block; margin-bottom: 2px; }
 .w-100 { width: 100px; }
 .mb-10 { margin-bottom: 10px; }
 .mb-0 { margin-bottom: 0; }
+.mt-20 { margin-top: 20px; }
 .ml-10 { margin-left: 10px; }
 
 /* display */
@@ -85,7 +89,7 @@ label { display: block; margin-bottom: 2px; }
 
 /* header */
 .header { background-color: #40cf1a; }
-.header-inner { position: relative; width: 900px; height: 100px; margin: 0 auto; color: #fff; }
+.header-inner { position: relative; width: 900px; height: 120px; margin: 0 auto; color: #fff; }
 
 /* main */
 .main { width: 900px; padding: 40px 20px 100px; margin: 0 auto;}
@@ -103,16 +107,20 @@ label { display: block; margin-bottom: 2px; }
 /* header */
 
 /* logo */
-.logo { position: absolute; left: 0; top: 18px; text-decoration: none; font-size: 36px; color: #fff; }
+.logo { position: absolute; left: 0; top: 28px; max-width: 550px; text-decoration: none; font-size: 36px; color: #fff; }
+
+/* langs */
+.langs { position: absolute; right: 0; top: 7px; }
+.langs form { display: inline-block; vertical-align: middle; }
 
 /* user info */
-.user-info { position: absolute; right: 0; top: 32px; }
-.user-info strong, .user-info .btn { vertical-align: middle; }
+.user-info { position: absolute; right: 0; top: 42px; }
+.user-info strong, .user-info form, .user-info .btn { display: inline-block; vertical-align: middle; }
 .user-info strong { font-weight: normal; }
 .user-info .btn { margin: 0 0 0 10px; }
 
 /* login */
-.login { position: absolute; right: 0; top: 32px; }
+.login { position: absolute; right: 0; top: 42px; }
 
 
 
