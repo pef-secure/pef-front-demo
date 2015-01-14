@@ -24,6 +24,7 @@ model: Article::add_comment
 expected:
   - result: OK
     id_comment:
+    path:
     comments_number:
   - result: NO_CAPTCHA
     answer:
