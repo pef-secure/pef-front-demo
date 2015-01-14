@@ -36,7 +36,7 @@ article.commentForm.captcha = $( '#captcha_1' );
 
 article.commentTemplate = $( '#comment_template_box' ).html();
 
-article.isUserLogged = ( article.commentForm.author.length > 0 );
+article.isUserLogged = ( article.commentForm.author.length == 0 );
 
 
 
@@ -92,7 +92,7 @@ article.showCommentForm = function ( commentFor, id, insertAfterElem ) {
 	if ( article.isUserLogged ) {
 		article.commentForm.author.val ( '' );
 	} else {
-		captcha.reload ( 'captcha_reload_btn_1' );
+		captcha.reload ( 'captcha_reload_btn_1', false );
 	}
 	article.commentForm.comment.val ( '' );
 	article.commentForm.captcha.val ( '' );
@@ -206,7 +206,7 @@ article.init = function () {
 		_preResponse: function () { // optional
 			loader.hide ( 'add_comment' );
 			if ( ! article.isUserLogged ) {
-				captcha.reload ( 'captcha_reload_btn_1' );
+				captcha.reload ( 'captcha_reload_btn_1', false );
 			}
 		},
 

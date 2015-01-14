@@ -11,7 +11,7 @@ captcha.picPath = '';
 
 
 // reload
-captcha.reload = function ( captchaId ) {
+captcha.reload = function ( captchaId, needFocus ) {
 	$.ajax({
 		url: captcha.reloadUrl,
 		dataType: 'json',
@@ -24,7 +24,9 @@ captcha.reload = function ( captchaId ) {
 					captcha.group[captchaId].hash.val ( response.code );
 					var field = captcha.group[captchaId].field;
 					field.val ( '' );
-					field.focus();
+					if ( needFocus ) {
+						field.focus();
+					}
 					break;
 				default:
 					popup.show ( response.result + ': ' + response.answer );

@@ -28,8 +28,8 @@
 				<!-- text -->
 				<div class="text">
 
-					<h3><a href="#">[% rart.article.title %]</a></h3>
-
+					<h3[% IF author.result eq 'OK' %] class="mr-200"[% END IF %]><a href="#">[% rart.article.title %]</a></h3>
+	[% IF author.result eq 'OK' -%]
 					<form method="post" action="/ajaxDelArticle" class="ajax" id="delete_article_form">
 						<input type="hidden" name="id_article" value="[% rart.article.id_article %]">
 						<div class="btn-with-loader disp-ib btn-delete-article">
@@ -37,7 +37,7 @@
 							<div class="loader hidden" id="loader_delete_article"></div>
 						</div>
 					</form>
-
+	[% END IF -%]
 					<p class="author">[% rart.article.author %] <time class="date">([% rart.article.pub_date %])</time></p>
 					[% rart.article.content %]
 
