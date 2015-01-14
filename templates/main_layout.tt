@@ -10,18 +10,24 @@
 </head>
 
 <body>
-[% langs = "get langs".model %]
-[% FOR l in langs.langs %]
-<form method="post" action="/ajaxSetLang" class="validate ajax lang" id="[% l.lang %]_form">
-<input type="hidden" name="lang" value="[% l.lang %]">
-<input type="submit" class="btn" value="[% l.language %]">
-</form>
-[% END %]
+
 	<!-- header -->
 	<header class="header">
 		<div class="header-inner">
 			<!-- logo -->
 			<a href="/" class="logo">[% m('This is a PEF::Front Demo Blog') %]</a>
+
+			<!-- langs -->
+			<div class="langs" id="langs">
+[% langs = "get langs".model %]
+[% FOR l in langs.langs %]
+				<form method="post" action="/ajaxSetLang" class="validate ajax lang">
+					<input type="hidden" name="lang" value="[% l.lang %]">
+					<input type="submit" class="btn btn-small" value="[% l.language %]">
+				</form>
+[% END %]
+			</div><!-- langs -->
+
 [% author = "get author info".model %]
 [% IF author.result ne 'OK' %]
 			<!-- login -->
@@ -38,10 +44,10 @@
 [% ELSE %]
 			<div class="user-info">
 				<strong id="user_name">[% m('Hello $1', author.name) %]</strong>
-				<form method="post" action="/ajaxLogoutAuthor" class="ajax" id="logout_form">
-				<input type="button" class="btn" value="Logout">
+				<a href="/add" class="btn">[% m('Add article') %]</a>
+				<form method="post" action="/logoutAuthor">
+					<input type="submit" class="btn" value="Logout">
 				</form>
-				<a href="/add">[% m('Add article') %]</a>
 			</div><!-- user info -->
 [% END %]
 		</div>

@@ -219,10 +219,9 @@ zForm.addAjaxHandler = function ( selector, handlerOk ) {
 				type: form.attr ( 'method' ),
 				success: function ( response ) {
 
-					// set current form
-					zForm.currentAjaxForm = form;
-					// set current response
+					// set current response and current form
 					zForm.currentAjaxResponse = response;
+					zForm.currentAjaxForm = form; // protection from override by another ajax request
 
 					// start pre-response action
 					if ( '_preResponse' in params ) {

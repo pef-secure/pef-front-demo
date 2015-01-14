@@ -1,12 +1,16 @@
-// autorun
+
+// login form
+
+// init (autorun)
 if ( $( '#login_form' ).length > 0 ) {
+
 	// add ajax handler
 	zForm.addAjaxHandler ({
 
 		// form selector
 		_selector: '#login_form', // optional
 
-		// action before sending request
+		// action before sending a response
 		_before: function () { // optional
 			loader.show ( 'login' );
 		},
@@ -21,6 +25,5 @@ if ( $( '#login_form' ).length > 0 ) {
 			window.location.reload();
 		}
 	});
-} else if($( '#logout_form' ).length > 0 ) {
-	zForm.addAjaxHandler ('#logout_form', function () { window.location.reload(); });
-}
+
+};
