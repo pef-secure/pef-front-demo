@@ -20,7 +20,7 @@ sub get_info {
 
 sub login {
 	my ($req, $defaults) = @_;
-	my $author = one_row(author => {hash_ref_slice $req, 'password'});
+	my $author = one_row(author => {hash_ref_slice $req, qw(login password)});
 	if ($author) {
 		open my $urand, '<', '/dev/urandom' or die "can't open /dev/urandom: $!";
 		read ($urand, my $buf, 32);
