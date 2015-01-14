@@ -21,7 +21,7 @@
 
 				<input type="hidden" id="main_id_article" value="[% rart.article.id_article %]">
     [% IF author.result ne 'OK' -%]
-				<input type="hidden" id="captcha_update_url" value="/ajaxCaptcha">
+				<input type="hidden" id="captcha_reload_url" value="/ajaxCaptcha">
 				<input type="hidden" id="captcha_pic_path" value="[% config('www_static_captchas_path') %]">
 	[% END IF -%]
 
@@ -59,7 +59,7 @@
 							<p>[% comment.comment %]</p>
 							<form method="post" action="/ajaxDelCommentWithTree" class="delete-comment-form ajax">
 								<input type="hidden" name="id_comment" value="[% comment.id_comment %]">
-								<input type="button" class="btn leave-comment" value="[% m('Leave comment') %]"> | 
+								<input type="button" class="btn leave-comment" value="[% m('Answer') %]"> | 
 								<div class="btn-with-loader disp-ib">
 									<input type="submit" class="btn delete-comment" value="[% m('Delete comment') %]">
 									<div class="loader hidden" id="loader_delete_comment_[% comment.id_comment %]"></div>
@@ -78,7 +78,7 @@
 						<p>__text__</p>
 						<form method="post" action="/ajaxDelCommentWithTree" class="delete-comment-form ajax">
 							<input type="hidden" name="id_comment" value="__id__">
-							<input type="button" class="btn leave-comment" value="[% m('Leave comment') %]"> | 
+							<input type="button" class="btn leave-comment" value="[% m('Answer') %]"> | 
 							<div class="btn-with-loader disp-ib">
 								<input type="submit" class="btn delete-comment" value="[% m('Delete comment') %]">
 								<div class="loader hidden" id="loader_delete_comment___id__"></div>
@@ -93,11 +93,11 @@
 						<input type="hidden" name="id_article" id="id_article" value="[% rart.article.id_article %]">
 						<input type="hidden" name="id_comment_parent" id="id_comment_parent">
     [% IF author.result ne 'OK' -%]
-    					<input type="text" class="fld" name="author" id="author" required minlength="1" maxlength="40">
+    					<input type="text" class="fld" name="author" id="author" required minlength="1" maxlength="40" placehoder="m('Your name')">
 	[% ELSE -%]
 						<input type="hidden" name="author" value="[% author.login %]">
 	[% END IF -%]
-						<textarea name="comment" id="comment" required minlength="4" maxlength="1000"></textarea>
+						<textarea name="comment" id="comment" required minlength="4" maxlength="1000" placehoder="m('Comment')"></textarea>
     [% IF author.result ne 'OK' -%]
         [% captcha="captcha".model() -%]
         				<input type="hidden" name="captcha_hash" id="captcha_hash_1" value="[% captcha.code %]">

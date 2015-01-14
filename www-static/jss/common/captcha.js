@@ -5,15 +5,15 @@ var captcha = {};
 
 
 captcha.group = {};
-captcha.updateUrl = '';
+captcha.reloadUrl = '';
 captcha.picPath = '';
 
 
 
-// update
-captcha.update = function ( captchaId ) {
+// reload
+captcha.reload = function ( captchaId ) {
 	$.ajax({
-		url: captcha.updateUrl,
+		url: captcha.reloadUrl,
 		dataType: 'json',
 		type: 'post',
 		success: function ( response ) {
@@ -36,10 +36,10 @@ captcha.update = function ( captchaId ) {
 
 
 // init
-captcha.init = function ( updateUrl, picPath ) {
+captcha.init = function ( reloadUrl, picPath ) {
 
-	// set update url and pic path
-	captcha.updateUrl = updateUrl;
+	// set reload url and pic path
+	captcha.reloadUrl = reloadUrl;
 	captcha.picPath = picPath;
 
 	// reload btn click
@@ -57,7 +57,7 @@ captcha.init = function ( updateUrl, picPath ) {
 		// add btn click
 		$(this).click ( function () {
 			$(this).addClass ( 'transparent' );
-			captcha.update ( $(this).attr ( 'id' ) );
+			captcha.reload ( $(this).attr ( 'id' ) );
 		});
 	});
 

@@ -18,7 +18,7 @@ langForm.init = function () {
 
 		_selector: 'form.lang', // optional
 
-		// action before sending a response
+		// action before sending a request
 		_before: function () { // optional
 			var btn = langForm.getBtn();
 			btn.addClass ( 'transparent' );

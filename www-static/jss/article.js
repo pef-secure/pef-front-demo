@@ -47,7 +47,7 @@ article.addDeleteCommentAjaxHandler = function ( selector ) {
 		// form selector
 		_selector: selector, // optional
 
-		// action before sending a response
+		// action before sending a request
 		_before: function () { // optional
 			article.hideCommentForm();
 			var commentId = article.getCommentId();
@@ -91,6 +91,8 @@ article.getCommentPathId = function () {
 article.showCommentForm = function ( commentFor, id, insertAfterElem ) {
 	if ( article.isUserLogged ) {
 		article.commentForm.author.val ( '' );
+	} else {
+		captcha.reload ( 'captcha_reload_btn_1' );
 	}
 	article.commentForm.comment.val ( '' );
 	article.commentForm.captcha.val ( '' );
@@ -134,11 +136,13 @@ article.buildComment = function () {
 				  article.addZero ( currentDate.getHours() ) + ':' + 
 				  article.addZero ( currentDate.getMinutes() ) + ':' + 
 				  article.addZero ( currentDate.getSeconds() );
+
+	var userName = article.userName || article.commentForm.author.val();
 	
 	var commentHtml = article.commentTemplate;
 	commentHtml = commentHtml.replace ( /__id__/g, commentId );
 	commentHtml = commentHtml.replace ( /__path__/g, commentPath );
-	commentHtml = commentHtml.replace ( /__author__/, article.userName );
+	commentHtml = commentHtml.replace ( /__author__/, userName );
 	commentHtml = commentHtml.replace ( /__date__/, currentDate );
 	commentHtml = commentHtml.replace ( /__text__/, article.commentForm.comment.val() );
 
@@ -170,7 +174,7 @@ article.addZero = function ( val ) {
 article.init = function () {
 
 	// captcha init
-	captcha.init ( $( '#captcha_update_url' ).val(), $( '#captcha_pic_path' ).val() );
+	captcha.init ( $( '#captcha_reload_url' ).val(), $( '#captcha_pic_path' ).val() );
 
 
 	// leave comment for comment
@@ -193,7 +197,7 @@ article.init = function () {
 		// form selector
 		_selector: '#leave_comment_form', // optional
 
-		// action before sending a response
+		// action before sending a request
 		_before: function () { // optional
 			loader.show ( 'add_comment' );
 		},
@@ -201,6 +205,9 @@ article.init = function () {
 		// action after receiving a response
 		_preResponse: function () { // optional
 			loader.hide ( 'add_comment' );
+			if ( ! article.isUserLogged ) {
+				captcha.reload ( 'captcha_reload_btn_1' );
+			}
 		},
 
 		// results
@@ -219,7 +226,7 @@ article.init = function () {
 		// form selector
 		_selector: '#delete_article_form', // optional
 
-		// action before sending a response
+		// action before sending a request
 		_before: function () { // optional
 			loader.show ( 'delete_article' );
 		},

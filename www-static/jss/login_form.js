@@ -10,7 +10,7 @@ if ( $( '#login_form' ).length > 0 ) {
 		// form selector
 		_selector: '#login_form', // optional
 
-		// action before sending a response
+		// action before sending a request
 		_before: function () { // optional
 			loader.show ( 'login' );
 		},
