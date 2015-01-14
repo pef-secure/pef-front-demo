@@ -1,5 +1,5 @@
 [% WRAPPER main_layout.tt 
-    title = "Article"
+    title = m("Article")
 %]
 [% IF form.cookie eq '' or form.cookie == 0 %]
 	<script type="text/javascript">
@@ -41,7 +41,7 @@
 					<p class="author">[% rart.article.author %] <time class="date">([% rart.article.pub_date %])</time></p>
 					[% rart.article.content %]
 
-					<p class="mt-20"><a href="#" id="leave_comment_for_article">Leave a comment</a></p>
+					<p class="mt-20"><a href="#" id="leave_comment_for_article">[% m('Leave a comment') %]</a></p>
 				</div><!-- text -->
 
 				<!-- comments -->
@@ -59,9 +59,9 @@
 							<p>[% comment.comment %]</p>
 							<form method="post" action="/ajaxDelCommentWithTree" class="delete-comment-form ajax">
 								<input type="hidden" name="id_comment" value="[% comment.id_comment %]">
-								<input type="button" class="btn leave-comment" value="leave a comment"> | 
+								<input type="button" class="btn leave-comment" value="[% m('Leave a comment') %]"> | 
 								<div class="btn-with-loader disp-ib">
-									<input type="submit" class="btn delete-comment" value="delete comment">
+									<input type="submit" class="btn delete-comment" value="[% m('Delete comment') %]">
 									<div class="loader hidden" id="loader_delete_comment_[% comment.id_comment %]"></div>
 								</div>
 							</form>
@@ -78,9 +78,9 @@
 						<p>__text__</p>
 						<form method="post" action="/ajaxDelCommentWithTree" class="delete-comment-form ajax">
 							<input type="hidden" name="id_comment" value="__id__">
-							<input type="button" class="btn leave-comment" value="leave a comment"> | 
+							<input type="button" class="btn leave-comment" value="[% m('Leave a comment') %]"> | 
 							<div class="btn-with-loader disp-ib">
-								<input type="submit" class="btn delete-comment" value="delete comment">
+								<input type="submit" class="btn delete-comment" value="[% m('Delete comment') %]">
 								<div class="loader hidden" id="loader_delete_comment___id__"></div>
 							</div>
 						</form>
@@ -97,13 +97,16 @@
 						<textarea name="comment" id="comment" required minlength="4" maxlength="1000"></textarea>
     [% IF author.result ne 'OK' -%]
         [% captcha="captcha".model() -%]
-						<input type="hidden" name="captcha_hash" id="captcha_hash_1" value="[% captcha.code %]">
+        				<input type="hidden" name="captcha_hash" id="captcha_hash_1" value="[% captcha.code %]">
 						<img src="[% config('www_static_captchas_path') %][% captcha.code %].jpg" id="captcha_pic_1">
 						<input type="button" class="captcha-reload-btn" id="captcha_reload_btn_1">
 						<input type="text" class="fld w-100" name="captcha" id="captcha_1" autocomplete="off" required minlength="5" maxlength="7">
+	[% ELSE -%]
+						<input type="hidden" name="captcha_hash" id="captcha_hash_1" value="">
+						<input type="hidden" name="captcha" value="nocheck">
 	[% END IF -%]
 						<div class="btn-with-loader disp-ib">
-							<input type="submit" class="btn ml-10" id="add_comment_btn" value="Leave a comment">
+							<input type="submit" class="btn ml-10" id="add_comment_btn" value="[% m('Leave a comment') %]">
 							<div class="loader hidden" id="loader_add_comment"></div>
 						</div>
 					</form>
