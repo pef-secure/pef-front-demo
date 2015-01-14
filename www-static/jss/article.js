@@ -105,8 +105,8 @@ article.buildComment = function () {
 };
 
 // update comments number
-article.updateCommentsNumber = function ( msg ) {
-	article.commentsNumber.html ( response.comments_number );
+article.updateCommentsNumber = function () {
+	article.commentsNumber.html ( zForm.currentAjaxResponse.comments_number );
 };
 
 // add zero
@@ -156,7 +156,7 @@ article.init = function () {
 		ok: function () {
 			article.buildComment();
 			article.hideCommentForm();
-			article.updateCommentsNumber ( zForm.currentAjaxResponse.comments_number );
+			article.updateCommentsNumber();
 		}
 	});
 
@@ -216,7 +216,7 @@ article.init = function () {
 				}
 			});
 			commentBox.remove();
-			article.updateCommentsNumber ( zForm.currentAjaxResponse.comments_number );
+			article.updateCommentsNumber();
 		}
 	});
 
