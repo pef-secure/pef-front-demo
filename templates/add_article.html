@@ -9,7 +9,7 @@
 
 			<form method="post" action="/ajaxAddArticle" class="validate ajax" id="add_article_form">
 				<input type="text" class="fld" name="title" id="title" placeholder="[% m('Title') %]" required minlength="5" maxlength="100">
-				<textarea name="content" id="content" placeholder="[% m('Text') %]" required minlength="5" maxlength="4000"></textarea>
+				<textarea name="content" id="content" placeholder="[% m('Content') %]" required minlength="5" maxlength="4000"></textarea>
 				<div class="btn-with-loader">
 					<input type="submit" class="btn w-100p" id="add_article_send_btn" value="[% m('Add article') %]">
 					<div class="loader hidden" id="loader_add_article"></div>

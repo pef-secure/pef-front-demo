@@ -103,6 +103,9 @@ msgstr ""
 msgid "PEF Demo"
 msgstr ""
 
+msgid "All rights reserved"
+msgstr ""
+
 msgid "Anonymous user must enter CAPTCHA"
 msgstr ""
 

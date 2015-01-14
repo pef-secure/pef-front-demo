@@ -106,6 +106,9 @@ msgstr "Капча"
 msgid "PEF Demo"
 msgstr "PEF Демо"
 
+msgid "All rights reserved"
+msgstr "Все права принадлежат их владельцам"
+
 msgid "Anonymous user must enter CAPTCHA"
 msgstr "Анонимные пользователи должны вводить капчу"
 
