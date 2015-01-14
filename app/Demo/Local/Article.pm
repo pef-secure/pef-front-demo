@@ -80,6 +80,8 @@ sub add_comment {
 		comment => hash_ref_slice $req,
 		qw(id_article id_comment_parent comment author)
 	);
+	$new_comment->fetch;
+	$new_comment->filter_timestamp;
 	my $comment_count =
 	  one_row([comment => -columns => 'count(*)'], {hash_ref_slice $req, 'id_article'})->count;
 	my $path = connector->run(
@@ -103,11 +105,11 @@ sub add_comment {
 		}
 	);
 	return {
-		result     => "OK",
-		id_comment => $new_comment->id_comment,
-		path       => $path->{path},
-		comments_number =>
-		  msg_get_n($defaults->{lang}, '$1 comments', $comment_count, $comment_count)->{message}
+		result          => "OK",
+		id_comment      => $new_comment->id_comment,
+		path            => $path->{path},
+		pub_date        => $new_comment->pub_date,
+		comments_number => msg_get_n($defaults->{lang}, '$1 comments', $comment_count, $comment_count)->{message}
 	};
 }
 

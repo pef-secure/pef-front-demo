@@ -25,6 +25,7 @@ expected:
   - result: OK
     id_comment:
     path:
+    pub_date:
     comments_number:
   - result: NO_CAPTCHA
     answer:
