@@ -32,16 +32,12 @@ sub get_article_with_comments {
 		result => "NO_ARTICLE",
 		answer => "No such article"
 	} unless $article;
-	#
-	#	my $author = one_row(author => $article->id_author)->name;
-	# next statement is a little bit prettier
-	my $author = $article->Author->name;
 	# transform object into hash
-	$article = $article->filter_timestamp->data;
-	$article->{author} = $author;
+	my $article_hash = $article->filter_timestamp->data;
+	$article_hash->{author} = $article->Author->name;
 	return {
 		result   => "OK",
-		article  => $article,
+		article  => $article_hash,
 		comments => connector->run(
 			sub {
 				$_->selectall_arrayref(
@@ -161,6 +157,30 @@ sub add_article {
 			article => hash_ref_slice $req,
 			qw(title content id_author)
 		)->id_article
+	};
+}
+
+sub edit_article {
+	my ($req, $defaults) = @_;
+	return {
+		result => "NEED_LOGIN",
+		answer => 'You have to login for this operation'
+	  }
+	  unless get_author_from_auth($req->{auth});
+	my $article = one_row(article => $req->{id_article});
+	return {
+		result => "NO_ARTICLE",
+		answer => "No such article"
+	} unless $article;
+	$article->title($req->{title});
+	$article->content($req->{content});
+	$article->update;
+	my $author       = $article->Author->name;
+	my $article_hash = $article->filter_timestamp->data;
+	$article_hash->{author} = $author;
+	return {
+		result  => "OK",
+		article => $article_hash,
 	};
 }
 
