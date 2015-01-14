@@ -125,14 +125,6 @@ article.buildComment = function () {
 	var commentId = zForm.currentAjaxResponse.id_comment;
 	var commentPath = zForm.currentAjaxResponse.path.join ( '_' );
 	var parentCommentPath = commentPath.replace ( '_' + commentId, '' );
-	
-	var currentDate = new Date();
-	currentDate = article.addZero ( currentDate.getDate() ) + '-' + 
-				  article.addZero ( currentDate.getMonth() + 1 ) + '-' + 
-				  currentDate.getFullYear() + ' ' + 
-				  article.addZero ( currentDate.getHours() ) + ':' + 
-				  article.addZero ( currentDate.getMinutes() ) + ':' + 
-				  article.addZero ( currentDate.getSeconds() );
 
 	var userName = article.userName || article.commentForm.author.val();
 	
@@ -140,7 +132,7 @@ article.buildComment = function () {
 	commentHtml = commentHtml.replace ( /__id__/g, commentId );
 	commentHtml = commentHtml.replace ( /__path__/g, commentPath );
 	commentHtml = commentHtml.replace ( /__author__/, userName );
-	commentHtml = commentHtml.replace ( /__date__/, currentDate );
+	commentHtml = commentHtml.replace ( /__date__/, zForm.currentAjaxResponse.pub_date );
 	commentHtml = commentHtml.replace ( /__text__/, article.commentForm.comment.val() );
 
 	if ( article.commentForm.idCommentParent.val() != '' ) {
