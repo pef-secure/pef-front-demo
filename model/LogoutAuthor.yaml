@@ -8,7 +8,7 @@ model: Author::logout
 result:
   DEFAULT:
     redirect:
-        - TT headers('referer') 
+        - TT defaults.headers('referer') 
         - /
     unset-cookie: auth
 expected:
