@@ -15,6 +15,7 @@ sub auth_to_author {
 	if (!$is_author) {
 		$field =~ s/^\s*//;
 		$field =~ s/\s*$//;
+		$field =~ s/&/&amp;/g;
 		$field =~ s/</&lt;/g;
 		$field =~ s/>/&gt;/g;
 		my $fake_author = one_row(author => {name => $field});
