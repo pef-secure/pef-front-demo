@@ -76,6 +76,27 @@ msgstr ""
 msgid "Main page"
 msgstr ""
 
+msgid "Answer"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Content"
+msgstr ""
+
+msgid "Your name"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+msgid "Captcha"
+msgstr ""
+
+msgid "PEF Demo"
+msgstr ""
+
 msgid "Anonymous user must enter CAPTCHA"
 msgstr ""
 

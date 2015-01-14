@@ -79,8 +79,29 @@ msgstr "Выйти"
 msgid "Main page"
 msgstr "Главная страница"
 
+msgid "Answer"
+msgstr "Ответить"
+
+msgid "Title"
+msgstr "Заголовок"
+
+msgid "Content"
+msgstr "Содержание"
+
+msgid "Your name"
+msgstr "Ваше имя"
+
+msgid "Comment"
+msgstr "Комментарий"
+
+msgid "Captcha"
+msgstr "Капча"
+
+msgid "PEF Demo"
+msgstr "PEF Демо"
+
 msgid "Anonymous user must enter CAPTCHA"
-msgstr "Анонимные пользователи должны вводить CAPTCHA"
+msgstr "Анонимные пользователи должны вводить капчу"
 
 msgid "You have to login for this operation"
 msgstr "Необходимо войти в систему для этой операции"

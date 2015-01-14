@@ -67,10 +67,10 @@
 	<div class="footer-inner">
 
 		<!-- site name -->
-		<div class="site-name">PEF Demo</div>
+		<div class="site-name">[% m('PEF Demo') %]</div>
 
 		<!-- copyrights -->
-		<div class="copyrights">All rights reserved</div>
+		<div class="copyrights">[% m('All rights reserved') %]</div>
 
 	</div>
 </footer><!-- footer -->
@@ -94,13 +94,13 @@
 
 	// fields
 	msg.field = {};
-	msg.field.login = 'Login';
-	msg.field.password = 'Password';
-	msg.field.title = 'Title';
-	msg.field.content = 'Content';
-	msg.field.author = 'Name';
-	msg.field.comment = 'Comment';
-	msg.field.captcha = 'Captcha';
+	msg.field.login = '[% m("Username") %]';
+	msg.field.password = '[% m("Password") %]';
+	msg.field.title = '[% m("Title") %]';
+	msg.field.content = '[% m("Content") %]';
+	msg.field.author = '[% m("Your name") %]';
+	msg.field.comment = '[% m("Comment") %]';
+	msg.field.captcha = '[% m("Captcha") %]';
 
 	// error messages
 	msg.error = {};
