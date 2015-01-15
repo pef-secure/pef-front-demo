@@ -19,7 +19,7 @@ if ( $( '#add_article_form' ).length > 0 ) {
 
 		// results
 		ok: function () {
-			window.location = '/article/' + zForm.currentAjaxResponse.id_article;
+			window.location = '/article/' + zForm.currentAjaxResponse.article.id_article;
 		}
 	});
 
