@@ -1,5 +1,5 @@
 [% WRAPPER main_layout.tt 
-    title = m('Add article')
+    title = m('Edit article')
 %]
 
 [% rart = "get article with comments".model(id_article => 0 + form.cookie) %]
@@ -10,7 +10,7 @@
 
 		<h3>[% m('Edit article') %]</h3>
 
-		<form method="post" action="/ajaxAddArticle" class="validate ajax" id="add_article_form">
+		<form method="post" action="/ajaxEditArticle" class="validate ajax" id="add_article_form">
 			<input type="hidden" name="id_article" value="[% rart.article.id_article %]">
 			<input type="text" class="fld" name="title" id="title" placeholder="[% m('Title') %]" required minlength="5" maxlength="100" value="[% rart.article.title %]">
 			<textarea name="content" id="content" placeholder="[% m('Content') %]" required minlength="5" maxlength="4000">[% rart.article.content %]</textarea>

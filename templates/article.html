@@ -31,7 +31,7 @@
 					<h3[% IF author.result eq 'OK' %] class="mr-200"[% END IF %]>[% rart.article.title %]</h3>
 	[% IF author.result eq 'OK' -%]
 					<div class="article-actions">
-						<a href="/editArticle/[% rart.article.id_article %]" class="btn">[% m('Edit article') %]</a>
+						<a href="/edit/[% rart.article.id_article %]" class="btn">[% m('Edit article') %]</a>
 						<form method="post" action="/ajaxDelArticle" class="ajax" id="delete_article_form">
 							<input type="hidden" name="id_article" value="[% rart.article.id_article %]">
 							<div class="btn-with-loader disp-ib btn-delete-article">

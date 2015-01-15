@@ -70,6 +70,12 @@ msgstr "Русский"
 msgid "Article"
 msgstr "Статья"
 
+msgid "Add article"
+msgstr "Добавить статью"
+
+msgid "Edit article"
+msgstr "Редактировать статью"
+
 msgid "Username"
 msgstr "Имя пользователя"
 

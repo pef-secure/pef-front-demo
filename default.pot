@@ -67,6 +67,12 @@ msgstr ""
 msgid "Article"
 msgstr ""
 
+msgid "Add article"
+msgstr ""
+
+msgid "Edit article"
+msgstr ""
+
 msgid "Username"
 msgstr ""
 
