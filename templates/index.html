@@ -19,7 +19,7 @@
 
 					<p class="author">[% article.author %]<time class="date">([% article.pub_date %])</time></p>
 					[% article.content %]
-					<h6 class="comments-number comments-number-small">[% mn('$1 comment', article.comment_count, article.comment_count) %]</h6>
+					<h6 class="comments-number comments-number-small"><a href="/article/[% article.id_article %]#comments">[% mn('$1 comment', article.comment_count, article.comment_count) %]</a></h6>
 
 				</div><!-- text -->
 			</article><!-- article -->

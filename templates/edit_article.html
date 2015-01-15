@@ -1,0 +1,27 @@
+[% WRAPPER main_layout.tt 
+    title = m('Add article')
+%]
+
+[% rart = "get article with comments".model(id_article => 0 + form.cookie) %]
+[% IF rart.result eq 'OK' %]
+
+	<!-- add article -->
+	<div class="add-article">
+
+		<h3>[% m('Edit article') %]</h3>
+
+		<form method="post" action="/ajaxAddArticle" class="validate ajax" id="add_article_form">
+			<input type="hidden" name="id_article" value="[% rart.article.id_article %]">
+			<input type="text" class="fld" name="title" id="title" placeholder="[% m('Title') %]" required minlength="5" maxlength="100" value="[% rart.article.title %]">
+			<textarea name="content" id="content" placeholder="[% m('Content') %]" required minlength="5" maxlength="4000">[% rart.article.content %]</textarea>
+			<div class="btn-with-loader">
+				<input type="submit" class="btn w-100p" id="add_article_send_btn" value="[% m('Save article') %]">
+				<div class="loader hidden" id="loader_add_article"></div>
+			</div>
+		</form>
+		
+	</div><!-- add article -->
+[% ELSE %]
+	<h1>[% rart.answer %]</h1>
+[% END %]
+[% END WRAPPER %]

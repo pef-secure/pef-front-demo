@@ -157,7 +157,9 @@ label { display: block; margin-bottom: 2px; }
 .article .text p:last-child { margin-bottom: 0; }
 .article .author { font-style: italic; }
 .article .date { margin-left: 5px; font-size: 12px; color: #aaa; }
-.article .btn-delete-article { position: absolute; right: 0; top: 0; }
+.article .article-actions { position: absolute; right: 0; top: 0; }
+.article .article-actions a.btn, .article .article-actions form { display: inline-block; }
+.article .article-actions form { margin-left: 5px; }
 
 
 

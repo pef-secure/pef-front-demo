@@ -30,18 +30,21 @@
 
 					<h3[% IF author.result eq 'OK' %] class="mr-200"[% END IF %]>[% rart.article.title %]</h3>
 	[% IF author.result eq 'OK' -%]
-					<form method="post" action="/ajaxDelArticle" class="ajax" id="delete_article_form">
-						<input type="hidden" name="id_article" value="[% rart.article.id_article %]">
-						<div class="btn-with-loader disp-ib btn-delete-article">
-							<input type="submit" class="btn" value="[% m('Delete article') %]">
-							<div class="loader hidden" id="loader_delete_article"></div>
-						</div>
-					</form>
+					<div class="article-actions">
+						<a href="/editArticle/[% rart.article.id_article %]" class="btn">[% m('Edit article') %]</a>
+						<form method="post" action="/ajaxDelArticle" class="ajax" id="delete_article_form">
+							<input type="hidden" name="id_article" value="[% rart.article.id_article %]">
+							<div class="btn-with-loader disp-ib btn-delete-article">
+								<input type="submit" class="btn" value="[% m('Delete article') %]">
+								<div class="loader hidden" id="loader_delete_article"></div>
+							</div>
+						</form>
+					</div>
 	[% END IF -%]
 					<p class="author">[% rart.article.author %] <time class="date">([% rart.article.pub_date %])</time></p>
 					[% rart.article.content %]
 
-					<p class="mt-20"><a href="#" id="leave_comment_for_article">[% m('Leave comment') %]</a></p>
+					<p class="mt-20"><a href="#" name="comments" id="leave_comment_for_article">[% m('Leave comment') %]</a></p>
 				</div><!-- text -->
 
 				<!-- comments -->
@@ -51,7 +54,7 @@
 					<h6 class="comments-number" id="comments_number">[% mn('$1 comment', rart.comments.size, rart.comments.size) %]</h6>
 
 					<!-- comments list -->
-					<div id="comments">
+					<div id="comments_box">
     [% FOR comment in rart.comments -%]
     					<!-- comment -->
 						<div class="comment" id="comment_[% comment.path.join('_') %]" style="margin-left: [% (comment.depth - 1) * 20 %]px;">

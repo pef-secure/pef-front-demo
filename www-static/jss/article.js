@@ -23,7 +23,7 @@ if ( article.mainIdArticleFld.length > 0 ) {
 article.commentsNumber = $( '#comments_number' );
 article.leaveCommentForArticleLink = $( '#leave_comment_for_article' );
 
-article.commentsBox = $( '#comments' );
+article.commentsBox = $( '#comments_box' );
 article.commentFormBox = $( '#comment_form_box' );
 article.commentForm = {};
 article.commentForm.form = $( '#leave_comment_form' );
