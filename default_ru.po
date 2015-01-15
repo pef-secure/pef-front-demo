@@ -76,6 +76,9 @@ msgstr "Добавить статью"
 msgid "Edit article"
 msgstr "Редактировать статью"
 
+msgid "Save article"
+msgstr "Сохранить статью"
+
 msgid "Username"
 msgstr "Имя пользователя"
 
