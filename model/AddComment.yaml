@@ -27,6 +27,8 @@ expected:
     path:
     pub_date:
     comments_number:
+    need_reload:
+      ^optional: true
   - result: NO_CAPTCHA
     answer:
   - result: $DEFAULT
