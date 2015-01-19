@@ -2,6 +2,7 @@ package Demo::Local::Article;
 use DBIx::Struct qw(connector hash_ref_slice);
 use Demo::Common;
 use PEF::Front::NLS;
+use PEF::Front::Config;
 
 sub get_articles {
 	my ($req, $defaults) = @_;
@@ -172,12 +173,9 @@ sub edit_article {
 	$article->title($req->{title});
 	$article->content($req->{content});
 	$article->update;
-	my $author       = $article->Author->name;
-	my $article_hash = $article->filter_timestamp->data;
-	$article_hash->{author} = $author;
 	return {
-		result  => "OK",
-		article => $article_hash,
+		result     => "OK",
+		id_article => $article->id_article,
 	};
 }
 
