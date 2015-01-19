@@ -4,6 +4,9 @@ use Demo::Common;
 use PEF::Front::NLS;
 use PEF::Front::Config;
 
+use strict;
+use warnings;
+
 sub get_articles {
 	my ($req, $defaults) = @_;
 	my $articles = all_rows(
@@ -68,7 +71,7 @@ sub get_article_with_comments {
 sub add_comment {
 	my ($req, $defaults) = @_;
 	my $session = PEF::Front::Session->new($req);
-	my @cookies;
+	my @extra;
 	unless (%{$session->data}) {
 		return {
 			result => "NO_CAPTCHA",
@@ -80,11 +83,13 @@ sub add_comment {
 				name      => $req->{author},
 			}
 		);
-		@cookies = (
+		@extra = (
+			need_reload    => 1,
+			id_article     => $req->{id_article},
 			answer_cookies => [
 				auth => {
 					value   => $session->key,
-					expires => demo_login_expires
+					expires => demo_login_expires()
 				}
 			]
 		);
@@ -123,7 +128,7 @@ sub add_comment {
 		path            => $path->{path},
 		pub_date        => $new_comment->pub_date,
 		comments_number => msg_get_n($defaults->{lang}, '$1 comments', $comment_count, $comment_count)->{message},
-		@cookies
+		@extra
 	};
 }
 

@@ -203,9 +203,13 @@ article.init = function () {
 
 		// results
 		ok: function () {
-			article.buildComment();
-			article.hideCommentForm();
-			article.updateCommentsNumber();
+			if(zForm.currentAjaxResponse.need_reload) {
+				window.location = '/article/' + zForm.currentAjaxResponse.id_article;
+			} else {
+				article.buildComment();
+				article.hideCommentForm();
+				article.updateCommentsNumber();
+			}
 		}
 	});
 
