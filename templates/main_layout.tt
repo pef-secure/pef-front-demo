@@ -28,8 +28,8 @@
 [% END %]
 			</div><!-- langs -->
 
-[% author = "get author info".model %]
-[% IF author.result ne 'OK' %]
+[% client = "get author info".model %]
+[% IF client.result ne 'OK' %]
 			<!-- login -->
 			<div class="login">
 				<form method="post" action="/ajaxLoginAuthor" class="validate ajax" id="login_form">
@@ -43,8 +43,10 @@
 			</div><!-- login -->
 [% ELSE %]
 			<div class="user-info">
-				<strong>[% m('Hello <span id="user_name">$1</span>', author.name) %]</strong>
+				<strong>[% m('Hello <span id="user_name">$1</span>', client.name) %]</strong>
+  [% IF client.is_author %]
 				<a href="/add" class="btn">[% m('Add article') %]</a>
+  [% END IF %]
 				<form method="post" action="/submitLogoutAuthor">
 					<input type="submit" class="btn" value="[% m('Logout') %]">
 				</form>

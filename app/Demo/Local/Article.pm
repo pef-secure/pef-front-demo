@@ -66,12 +66,28 @@ sub get_article_with_comments {
 
 sub add_comment {
 	my ($req, $defaults) = @_;
-	my $author = get_author_from_auth($req->{auth});
-	return {
-		result => "NO_CAPTCHA",
-		answer => "Anonymous user must enter CAPTCHA"
-	  }
-	  if not $author and $req->{captcha_code} eq 'nocheck';
+	my $session = PEF::Front::Session->new($req);
+	my @cookies;
+	unless (%{$session->data}) {
+		return {
+			result => "NO_CAPTCHA",
+			answer => "Anonymous user must enter CAPTCHA"
+		  }
+		  if $req->{captcha_code} eq 'nocheck';
+		$session->data(
+			{   is_author => 0,
+				name      => $req->{author},
+			}
+		);
+		@cookies = (
+			answer_cookies => [
+				auth => {
+					value   => $session->key,
+					expires => demo_login_expires
+				}
+			]
+		);
+	}
 	my $new_comment = new_row(
 		comment => hash_ref_slice $req,
 		qw(id_article id_comment_parent comment author)
@@ -105,7 +121,8 @@ sub add_comment {
 		id_comment      => $new_comment->id_comment,
 		path            => $path->{path},
 		pub_date        => $new_comment->pub_date,
-		comments_number => msg_get_n($defaults->{lang}, '$1 comments', $comment_count, $comment_count)->{message}
+		comments_number => msg_get_n($defaults->{lang}, '$1 comments', $comment_count, $comment_count)->{message},
+		@cookies
 	};
 }
 
