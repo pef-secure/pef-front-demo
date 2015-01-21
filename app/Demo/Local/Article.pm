@@ -72,7 +72,7 @@ sub add_comment {
 	my ($req, $defaults) = @_;
 	my $session = PEF::Front::Session->new($req);
 	my @extra;
-	unless (%{$session->data}) {
+	unless (%{$session->data} && $session->data->{name}) {
 		return {
 			result => "NO_CAPTCHA",
 			answer => "Anonymous user must enter CAPTCHA"

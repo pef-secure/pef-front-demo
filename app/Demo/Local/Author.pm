@@ -2,12 +2,14 @@ package Demo::Local::Author;
 use PEF::Front::Config;
 use DBIx::Struct qw(hash_ref_slice);
 use Demo::Common;
+use strict;
+use warnings;
 
 sub get_info {
 	my ($req, $defaults) = @_;
 	my $ret;
 	my $session = PEF::Front::Session->new($req);
-	if (%{$session->data}) {
+	if (%{$session->data} && $session->data->{name}) {
 		$ret = {
 			result => "OK",
 			hash_ref_slice $session->data, qw(id_author name login is_author)
@@ -32,7 +34,7 @@ sub login {
 			}
 		);
 		my $auth    = $session->key;
-		my $expires = demo_login_expires;
+		my $expires = demo_login_expires();
 		new_row(
 			'author_auth',
 			id_author => $author->id_author,

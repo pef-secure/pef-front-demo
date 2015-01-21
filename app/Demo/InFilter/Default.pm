@@ -8,7 +8,7 @@ sub auth_to_author {
 	my $is_author = 0;
 	if ($def->{request}->cookies->{auth}) {
 		my $session = PEF::Front::Session->new($def->{request});
-		if (%{$session->data}) {
+		if (%{$session->data} && $session->data->{name}) {
 			$field     = $session->data->{name};
 			$is_author = $session->data->{is_author};
 		} else {

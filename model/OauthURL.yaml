@@ -1,0 +1,21 @@
+---
+params:
+  ip: $ip
+  auth: $auth
+  cookie: $limit40str
+model: Oauth::make_url
+result:
+  OK:
+    set-cookie:
+      auth:
+        value: TT response.auth
+        expires: TT response.expires
+    redirect: TT response.url
+  DEFAULT:
+expected:
+  - result: OK
+    url: 
+    auth: 
+    expires: 
+    service: 
+  - result: $DEFAULT

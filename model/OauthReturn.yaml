@@ -1,0 +1,21 @@
+---
+params:
+  ip: $ip
+  auth: $auth
+  coode:
+    optional: true
+  state:
+    optional: true
+  error:
+    optional: true
+  error_description:
+    optional: true
+model: Oauth::callback
+result:
+  OK:
+    redirect: TT response.back_url
+  DEFAULT:
+expected:
+  - result: OK
+    back_url: 
+  - result: $DEFAULT
