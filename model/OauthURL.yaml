@@ -1,7 +1,9 @@
 ---
 params:
   ip: $ip
-  auth: $auth
+  auth: 
+    base: auth
+    optional: true
   cookie: $limit40str
 model: Oauth::make_url
 result:
