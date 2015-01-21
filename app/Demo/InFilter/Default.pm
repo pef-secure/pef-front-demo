@@ -2,6 +2,10 @@ package Demo::InFilter::Default;
 use DBIx::Struct;
 use Demo::Common;
 use PEF::Front::Session;
+use Digest::MD5 qw(md5_hex);
+
+use strict;
+use warnings;
 
 sub auth_to_author {
 	my ($field, $def) = @_;
@@ -11,6 +15,9 @@ sub auth_to_author {
 		if (%{$session->data} && $session->data->{name}) {
 			$field     = $session->data->{name};
 			$is_author = $session->data->{is_author};
+			if ($session->data->{is_oauth}) {
+				$field = "anonymous-" . substr (md5_hex($field), 0, 4);
+			}
 		} else {
 			my $author = get_author_from_auth($def->{request}->cookies->{auth});
 			if ($author) {
