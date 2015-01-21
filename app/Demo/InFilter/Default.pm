@@ -4,6 +4,7 @@ use Demo::Common;
 use PEF::Front::Session;
 use Digest::MD5 qw(md5_hex);
 use Data::Dumper;
+use PEF::Front::Config;
 use strict;
 use warnings;
 
