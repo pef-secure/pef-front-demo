@@ -10,9 +10,12 @@ use warnings;
 sub auth_to_author {
 	my ($field, $def) = @_;
 	my $is_author = 0;
+	print STDERR "*** auth_to_author *** | enter\n";
 	if ($def->{request}->cookies->{auth}) {
+	print STDERR "*** auth_to_author *** | auth\n";
 		my $session = PEF::Front::Session->new($def->{request});
 		if (%{$session->data} && $session->data->{name}) {
+	print STDERR "*** auth_to_author *** | session\n";
 			$field     = $session->data->{name};
 			$is_author = $session->data->{is_author};
 			print STDERR Dumper $session->data, $session->data->{is_oauth};
