@@ -123,10 +123,11 @@ sub add_comment {
 		}
 	);
 	return {
-		result          => "OK",
-		id_comment      => $new_comment->id_comment,
-		path            => $path->{path},
-		pub_date        => $new_comment->pub_date,
+		result     => "OK",
+		id_comment => $new_comment->id_comment,
+		path       => $path->{path},
+		pub_date   => $new_comment->pub_date,
+		author     => $req->{author},
 		comments_number => msg_get_n($defaults->{lang}, '$1 comments', $comment_count, $comment_count)->{message},
 		@extra
 	};

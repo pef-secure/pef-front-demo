@@ -27,6 +27,7 @@ expected:
     path:
     pub_date:
     comments_number:
+    author: 
     need_reload:
       ^optional: true
   - result: NO_CAPTCHA
