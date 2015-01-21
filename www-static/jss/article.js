@@ -126,7 +126,9 @@ article.buildComment = function () {
 	var commentPath = zForm.currentAjaxResponse.path.join ( '_' );
 	var parentCommentPath = commentPath.replace ( '_' + commentId, '' );
 
-	var userName = article.userName || article.commentForm.author.val();
+//	var userName = article.userName || article.commentForm.author.val();
+	
+	var userName = zForm.currentAjaxResponse.author;
 	
 	var commentHtml = article.commentTemplate;
 	commentHtml = commentHtml.replace ( /__id__/g, commentId );
