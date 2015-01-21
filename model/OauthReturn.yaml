@@ -2,7 +2,7 @@
 params:
   ip: $ip
   auth: $auth
-  coode:
+  code:
     optional: true
   state:
     optional: true
