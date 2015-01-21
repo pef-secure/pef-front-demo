@@ -15,7 +15,7 @@ sub auth_to_author {
 			$field     = $session->data->{name};
 			$is_author = $session->data->{is_author};
 			if ($session->data->{is_oauth}) {
-				$field = "anonymous-" . substr (md5_hex($field), 0, 4);
+				$field = $session->data->{oauth_info}[0]{service} . "-" . substr (md5_hex($field), 0, 4);
 			}
 		} else {
 			my $author = get_author_from_auth($def->{request}->cookies->{auth});
