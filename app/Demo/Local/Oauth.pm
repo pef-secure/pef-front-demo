@@ -4,6 +4,7 @@ use PEF::Front::Oauth;
 use PEF::Front::Session;
 use strict;
 use warnings;
+use Data::Dumper;
 
 sub make_url {
 	my ($req, $defaults) = @_;
@@ -23,6 +24,7 @@ sub make_url {
 sub callback {
 	my ($req, $defaults) = @_;
 	my $session = PEF::Front::Session->new($req);
+	print STDERR Dumper $req, $session;
 	my $back_url = $session->data->{oauth_return_url} || '/';
 	delete $session->data->{oauth_return_url};
 	unless ($req->{state} && $req->{code}) {
