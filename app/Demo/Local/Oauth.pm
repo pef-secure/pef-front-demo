@@ -8,7 +8,7 @@ use warnings;
 sub make_url {
 	my ($req, $defaults) = @_;
 	my $session = PEF::Front::Session->new($req);
-	my $oauth   = PEF::Front::Oauth->new($req->{cookie}, $session);
+	my $oauth   = PEF::Front::Oauth->new($req->{service}, $session);
 	my $expires = demo_login_expires();
 	$session->data->{oauth_return_url} = $defaults->{headers}->get_header('Referer') || '/';
 	return {
@@ -16,7 +16,7 @@ sub make_url {
 		url     => $oauth->authorization_server($oauth->user_info_scope),
 		auth    => $session->key,
 		expires => $expires,
-		service => $req->{cookie},
+		service => $req->{service},
 	};
 }
 
@@ -40,8 +40,9 @@ sub callback {
 	my $oauth = PEF::Front::Oauth->new($service, $session);
 	$oauth->exchange_code_to_token($req);
 	my $info = $oauth->get_user_info();
-	$session->data->{name} = $info->{name};
-	$session->data->{is_author} ||= 0;
+	$session->data->{name}      = $info->{name};
+	$session->data->{is_author} = 0;
+	$session->data->{is_oauth}  = 1;
 	return {
 		result   => "OK",
 		back_url => $back_url,

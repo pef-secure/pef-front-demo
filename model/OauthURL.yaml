@@ -4,7 +4,8 @@ params:
   auth: 
     base: auth
     optional: true
-  cookie: $limit40str
+  service:
+    default: form.cookie 
 model: Oauth::make_url
 result:
   OK:
