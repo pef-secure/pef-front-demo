@@ -3,7 +3,7 @@ use DBIx::Struct;
 use Demo::Common;
 use PEF::Front::Session;
 use Digest::MD5 qw(md5_hex);
-
+use Data::Dumper;
 use strict;
 use warnings;
 
@@ -15,6 +15,7 @@ sub auth_to_author {
 		if (%{$session->data} && $session->data->{name}) {
 			$field     = $session->data->{name};
 			$is_author = $session->data->{is_author};
+			print STDERR Dumper $session->data, $session->data->{is_oauth};
 			if ($session->data->{is_oauth}) {
 				$field = "anonymous-" . substr (md5_hex($field), 0, 4);
 			}
