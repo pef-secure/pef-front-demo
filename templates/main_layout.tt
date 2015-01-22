@@ -44,7 +44,7 @@
 
 			<!-- oauth login -->
 			<div class="oauth-login">
-				<span>[% m('Enter with') %]:</span> <a href="/getOauthURL/yandex"><img src="/images/oauth-yandex.png"></a>
+				<span>[% m('Login via') %]:</span> <a href="/getOauthURL/yandex"><img src="/images/oauth-yandex.png"></a>
 			</div><!-- oauth login -->
 [% ELSE %]
 			<div class="user-info">

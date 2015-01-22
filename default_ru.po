@@ -88,6 +88,9 @@ msgstr "Пароль"
 msgid "Login"
 msgstr "Войти"
 
+msgid "Login via"
+msgstr "Войти через"
+
 msgid "Logout"
 msgstr "Выйти"
 

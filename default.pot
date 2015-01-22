@@ -85,6 +85,9 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
+msgid "Login via"
+msgstr ""
+
 msgid "Logout"
 msgstr ""
 
