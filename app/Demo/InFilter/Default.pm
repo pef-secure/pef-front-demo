@@ -3,6 +3,7 @@ use DBIx::Struct;
 use Demo::Common;
 use PEF::Front::Session;
 use Digest::MD5 qw(md5_hex);
+use Encode;
 use strict;
 use warnings;
 
@@ -15,7 +16,7 @@ sub auth_to_author {
 			$field     = $session->data->{name};
 			$is_author = $session->data->{is_author};
 			if ($session->data->{is_oauth}) {
-				$field = $session->data->{oauth_info}[0]{service} . "-" . substr (md5_hex($field), 0, 4);
+				$field = $session->data->{oauth_info}[0]{service} . "-" . substr (md5_hex(encode_utf8 $field), 0, 4);
 			}
 		} else {
 			my $author = get_author_from_auth($def->{request}->cookies->{auth});
