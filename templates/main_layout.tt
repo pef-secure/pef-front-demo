@@ -46,7 +46,7 @@
 			<div class="oauth-login">
 				<span>[% m('Login via') %]:</span>
 				<a href="/getOauthURL/yandex"><img src="/images/oauth-yandex.png"></a>
-				<a href="/getOauthURL/git-hub"><img src="/images/oauth-git-hub.png"></a>
+				<a href="/getOauthURL/git_hub"><img src="/images/oauth-git-hub.png"></a>
 			</div><!-- oauth login -->
 [% ELSE %]
 			<div class="user-info">
