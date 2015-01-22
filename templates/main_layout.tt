@@ -30,7 +30,6 @@
 
 [% client = "get author info".model %]
 [% IF client.result ne 'OK' %]
-<p>Войти с помощью <a href="/getOauthURL/yandex"><img src="/images/oauth-yandex.png"></a></p>
 			<!-- login -->
 			<div class="login">
 				<form method="post" action="/ajaxLoginAuthor" class="validate ajax" id="login_form">
@@ -42,6 +41,11 @@
 					</div>
 				</form>
 			</div><!-- login -->
+
+			<!-- oauth login -->
+			<div class="oauth-login">
+				<span>[% m('Enter with') %]:</span> <a href="/getOauthURL/yandex"><img src="/images/oauth-yandex.png"></a>
+			</div><!-- oauth login -->
 [% ELSE %]
 			<div class="user-info">
 				<strong>[% m('Hello <span id="user_name">$1</span>', client.name) %]</strong>

@@ -124,6 +124,10 @@ label { display: block; margin-bottom: 2px; }
 /* login */
 .login { position: absolute; right: 0; top: 42px; }
 
+/* oauth login */
+.oauth-login { position: absolute; right: 0; top: 87px; line-height: 25px; }
+.oauth-login span, .oauth-login a { display: inline-block; }
+
 
 
 /* footer */
