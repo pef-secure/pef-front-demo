@@ -28,9 +28,10 @@ sub cfg_oauth_client_secret {
 	$secrets->{$_[0]};
 }
 
-sub cfg_db_user      { "pef" }
-sub cfg_db_password  { "" }
-sub cfg_db_name      { "pef" }
-sub cfg_captcha_font { "/usr/share/fonts/truetype/ttf-dejavu/DejaVuSansMono-Bold.ttf" }
+sub cfg_db_user              { "pef" }
+sub cfg_db_password          { "" }
+sub cfg_db_name              { "pef" }
+sub cfg_captcha_font         { "/usr/share/fonts/truetype/ttf-dejavu/DejaVuSansMono-Bold.ttf" }
+sub cfg_no_multilang_support { 0 }
 
 1;
